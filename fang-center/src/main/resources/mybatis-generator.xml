@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="lib\mysql-connector-java-5.1.36.jar" />
+	<context id="context" targetRuntime="MyBatis3Simple" defaultModelType="flat">  <!-- 指定targetRuntime不生成和Example有关内容 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		<!-- 生成的Java模型类添加序列化接口，或者其它接口 -->
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" >
+			<property name="suppressJavaInterface" value="false"></property>
+		</plugin>
+		<!-- 为生成的Java模型创建一个toString方法 -->
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<!-- Mapper加方法、sql: selectByParameters batchInsert batchDelete -->
+		<plugin type="com.hitao.generator.mybatis.plugins.MapperPluginAdapter">
+			<!-- 是否加入mybatis配置文件 -->
+			<property name="isAddConfiguration" value="true" />
+			<property name="fileName" value="mybatis-configuration.xml" />
+			<property name="targetPackage" value="spring" />
+			<property name="targetProject" value="src/main/resources" />
+		</plugin>
+		<!-- 生成CURD的fm,js,action,service,dao文件 -->
+		<plugin type="com.hitao.generator.mybatis.plugins.CURDPluginAdapter">
+			<!-- 生成哪几类文件(fm,js,action,service,dao)，如不设置默认不生成，可选择部分，比如只生成service和dao：value="service,dao" -->
+			<property name="genFilesType" value="page,js,action,service,dao" />
+			<!-- 生成的文件模式：extend继承（默认），duplicate复本 -->
+			<property name="genFilesModal" value="duplicate" />
+			<!-- 为了避免生成覆盖已改动的代码，如不设置，默认target/generated-code，可以设置为src -->
+			<property name="genTargetSrcPath" value="src" />
+		</plugin>
+		<!-- 自定义生成注释 -->
+		<commentGenerator type="com.hitao.generator.mybatis.generator.HTCommentGenerator" />
+
+		<!-- 数据库配置 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/ht_framework_demo?characterEncoding=utf8"
+			userId="root" password="" />
+
+		<!-- java类型处理器，覆盖Tinyint转Byte为转Integer-->
+		<javaTypeResolver type="com.hitao.generator.mybatis.types.HTJavaTypeResolverImpl" />
+		<!--model生成位置-->
+		<javaModelGenerator targetPackage="com.ufo.fang.center.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--xml生成位置-->
+		<sqlMapGenerator targetPackage="sqlmap"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--mapper生成位置，type为自定义生成器-->
+		<javaClientGenerator targetPackage="com.ufo.fang.center.dao.mapper"
+			targetProject="src/main/java" type="com.hitao.generator.mybatis.javamapper.HTJavaClientGenerator">
+			<property name="enableSubPackages" value="true" />
+			<!--<property name="rootInterface" value="com.ufo.fang.common.dao.mapper.BaseMapper"/>&lt;!&ndash; mapper是否继承模式 &ndash;&gt;-->
+		</javaClientGenerator>
+
+		<!--
+		生成相关文件的table，一共九个方法：
+		insert、selectByPrimaryKey、deleteByPrimaryKey、selectAll、updateByPrimaryKey、
+		selectByParameters、selectByPageList、batchInsert、batchDelete
+		如果不想生成某个方法，就加上属性配置，比如不需要batchInsert：<property name="batchInsert" value="" />
+		(注：判断条件不包括value里的值，不用设置)
+		-->
+		<!--<table tableName="demo_dictionary" domainObjectName="Dictionary">-->
+		<!--</table>-->
+		<table tableName="demo_user" domainObjectName="User" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+	</context>
+</generatorConfiguration>

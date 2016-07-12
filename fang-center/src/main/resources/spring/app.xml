@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+	<context:property-placeholder
+		location="classpath*:/*.properties, classpath:app.properties"
+		ignore-resource-not-found="true" ignore-unresolvable="true"
+		file-encoding="UTF-8" />
+
+	<!--<bean id="taskExecutor"  -->
+        <!--class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">  -->
+        <!--<property name="corePoolSize" value="10" />  -->
+        <!--<property name="maxPoolSize" value="100" />  -->
+        <!--<property name="queueCapacity" value="100" />  -->
+        <!--<property name="keepAliveSeconds" value="30000" />  -->
+        <!--<property name="rejectedExecutionHandler">  -->
+            <!--<bean class="java.util.concurrent.ThreadPoolExecutor$AbortPolicy" />  -->
+        <!--</property>  -->
+    <!--</bean> -->
+
+	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
+    	<property name="resultSetLogEnabled" value="false" />
+	</bean>
+
+	<!-- 数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<!--  根据url可自动识别 so可以不设置 -->
+		<!-- <property name="driverClassName" value="${jdbc.driverClass:com.mysql.jdbc.Driver}"/> -->
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.pwd}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.minPoolSize:4}" />
+		<property name="minIdle" value="${jdbc.minPoolSize:4}" />
+		<property name="maxActive" value="${jdbc.maxPoolSize:10}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+		<property name="poolPreparedStatements" value="false"/>
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="20" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="stat" />
+		<!-- 慢sql记录 -->
+		<property name="connectionProperties" value="druid.stat.slowSqlMillis=1000" />
+		<property name="proxyFilters">
+	        <list>
+	            <ref bean="log-filter"/>
+	        </list>
+  	  	</property>
+	</bean>
+
+	<!-- 事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		primary="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="multipleDataSource" class="com.ufo.fang.common.datasource.MultipleDataSource">
+		<property name="defaultTargetDataSource" ref="dataSource"/>
+		<property name="targetDataSources">
+			<map>
+				<entry key="dataSource" value-ref="dataSource"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
+		primary="true">
+		<property name="dataSource" ref="multipleDataSource" />
+		<property name="configLocation"  value="classpath:spring/mybatis-configuration.xml"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.hitao.*.center.dao.mapper, com.hitao.*.center.dao.*.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- api认证拦截器 -->
+	<bean class="com.hitao.framework.http.HttpClient" />
+	
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+	<!--<bean id="multipartResolver"-->
+		<!--class="com.hitao.ump.center.util.FileUploadMultiPartResolver">-->
+		<!--<property name="defaultEncoding" value="UTF-8" />-->
+		<!--&lt;!&ndash; 指定所上传文件的总大小不能超过1MB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 &ndash;&gt;-->
+		<!--<property name="maxUploadSize" value="1048576" />-->
+		<!--&lt;!&ndash; <property name="allowedContentTypes">-->
+			<!--<value>application/vnd.ms-excel,application/octet-stream,application/x-excel,application/msexcel</value>-->
+		<!--</property> &ndash;&gt;-->
+	<!--</bean>-->
+	<!--&lt;!&ndash; SpringMVC在超出上传文件限制时，异常处理器 &ndash;&gt;  -->
+    <!--<bean id="exceptionResolver"  -->
+        <!--class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  -->
+        <!--<property name="exceptionMappings">  -->
+            <!--<props>  -->
+                <!--&lt;!&ndash; 遇到UmpException异常时，自动跳转到/error.html页面 &ndash;&gt;  -->
+                <!--<prop  -->
+                    <!--key="com.hitao.ump.center.exception.UmpException">/error.html</prop>  -->
+            <!--</props>  -->
+        <!--</property>  -->
+    <!--</bean>-->
+
+	<bean id="demoJedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.pool.maxTotal:1000}" />
+		<property name="maxIdle" value="${redis.pool.maxIdle:500}" />
+		<property name="maxWaitMillis" value="${redis.pool.maxWaitMillis:1000}" />
+		<property name="testOnBorrow" value="${redis.pool.testOnBorrow:true}" />
+	</bean>
+	<bean id="demoRedisCache" class="com.hitao.framework.cache.RedisCache">
+		<property name="pool">
+			<bean class="redis.clients.jedis.JedisPool">
+				<constructor-arg name="poolConfig" ref="demoJedisPoolConfig"/>
+				<constructor-arg name="host" value="${redis.host}" />
+				<constructor-arg name="port" value="${redis.port:6379}" />
+				<constructor-arg name="timeout" value="${redis.timeout:2000}" />
+				<constructor-arg name="password" value="#{'${redis.pwd:}'?:null}" />
+				<constructor-arg name="database" value="${redis.database:9}" />
+			</bean>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="com.hitao.*.center,com.hitao.*.service,com.hitao.*.cache,com.hitao.*.common.cache">
+ 		<context:exclude-filter type="regex"
+ 			expression=".*TestCase" />
+ 		<context:exclude-filter type="regex"
+ 			expression=".*\.web\..*" />
+ 		<context:exclude-filter type="regex" 
+ 			expression=".*\.dao\..*Dao"/>
+ 	</context:component-scan>
+ 	
+
+	<import resource="classpath:spring/memcache.xml" />
+	<!-- <import resource="classpath:hitao-ump-center/spring/app-switch.xml" /> -->
+
+	<!--<import resource="classpath:spring/rabbitmq.xml" />-->
+
+	<beans profile="default">
+		<import resource="classpath:spring/dubbo.xml" />
+	</beans>
+	<beans profile="plat">
+		<import resource="classpath:spring/dubbo.xml" />
+	</beans>
+	
+</beans>

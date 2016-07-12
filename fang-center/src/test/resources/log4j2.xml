@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<Configuration status="WARN">
+  <Appenders>
+  	<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+    <!-- Async Loggers will auto-flush in batches, so switch off immediateFlush. -->
+    <RollingRandomAccessFile name="RandomAccessFile" fileName="logs/hitao-demo/demo.log"
+    			filePattern="logs/hitao-demo/demo_%d{yyyy-MM-dd}_%i.log" immediateFlush="false">
+      <PatternLayout>
+        <Pattern>%d %p %class{1.} [%t] %location %m %ex%n</Pattern>
+      </PatternLayout>
+      <Policies>
+           <TimeBasedTriggeringPolicy modulate="true" interval="24"/>
+         <!--    <SizeBasedTriggeringPolicy size="51200 KB"/> -->
+       </Policies>
+    </RollingRandomAccessFile>
+  </Appenders>
+  <Loggers>
+    <asyncRoot level="info">
+      <appender-ref ref="RandomAccessFile"/>
+    </asyncRoot>
+  </Loggers>
+</Configuration>

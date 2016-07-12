@@ -1,0 +1,368 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ufo.commerce</groupId>
+		<artifactId>fang</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>fang-center</artifactId>
+	<packaging>war</packaging>
+	<name>搜房应用服务</name>
+
+	<properties>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+
+	<description>
+		开发环境maven打包命令 mvn clean package -P dev
+		测试环境maven打包命令 mvn clean package -P test
+		预发环境maven打包命令 mvn clean package -P pre
+		生产环境maven打包命令 mvn clean package -P prod
+	</description>
+
+	<profiles>
+		<profile>
+			<!--本地编译器开发环境maven配置(IP:localhost)-->
+			<id>dev</id>
+			<properties>
+				<!--资源目录dev文件夹下文件-->
+				<env>dev</env>
+			</properties>
+			<activation>
+				<!--默认打包设置-->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<!--测试环境maven配置(IP:127)-->
+			<id>test</id>
+			<properties>
+				<!--资源目录test文件夹下文件-->
+				<env>test</env>
+			</properties>
+		</profile>
+		<profile>
+			<!--预演环境maven配置(IP:10)-->
+			<id>pre</id>
+			<properties>
+				<!--资源目录pre文件夹下文件-->
+				<env>pre</env>
+			</properties>
+		</profile>
+		<profile>
+			<!--测试环境maven配置(IP:生产集群hitaoproducthttp1-7)-->
+			<id>prod</id>
+			<properties>
+				<!--资源目录prod文件夹下文件-->
+				<env>prod</env>
+			</properties>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<!-- servlet依赖 -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<!-- servlet依赖 -->
+
+		<!-- 单元测试依赖 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<!-- 单元测试依赖 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+
+		<!-- 数据库依赖 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+		<dependency>
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-core</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>	
+			<artifactId>druid</artifactId>
+		</dependency>
+		<!-- 数据库依赖 -->
+
+		<!-- Excel依赖 -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-excelant</artifactId>
+		</dependency>
+		<!-- Excel依赖 -->
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<!-- 集合扩展依赖 -->
+
+		<!-- 日志依赖 -->
+		<dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<!-- 日志依赖 -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+
+		<!--Json依赖-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+		</dependency>
+		<!--Json依赖-->
+
+		<!-- httpclient-->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.mashape.unirest</groupId>
+			<artifactId>unirest-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpasyncclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+		</dependency>
+		<!-- httpclient-->
+
+		<!-- 工程服务依赖 -->
+		<dependency>
+			<groupId>com.ufo.commerce</groupId>
+			<artifactId>fang-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ufo.commerce</groupId>
+			<artifactId>fang-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ufo.commerce</groupId>
+			<artifactId>fang-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- 工程服务依赖 -->
+	</dependencies>
+
+	<build>
+		<finalName>fang</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<encoding>utf8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.mybatis.generator</groupId>
+					<artifactId>mybatis-generator-maven-plugin</artifactId>
+					<version>1.3.2</version>
+					<configuration>
+						<configurationFile>src/main/resources/mybatis-generator.xml</configurationFile>
+						<verbose>true</verbose>
+						<overwrite>true</overwrite>
+					</configuration>
+					<executions>
+						<execution>
+							<id>Generate MyBatis Artifacts</id>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.mybatis.generator</groupId>
+							<artifactId>mybatis-generator-maven-plugin</artifactId>
+							<version>1.3.2</version>
+						</dependency>
+						<dependency>
+							<groupId>com.ufo.commerce</groupId>
+							<artifactId>fang-generator</artifactId>
+							<version>1.0.0-SNAPSHOT</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!--配置maven jetty插件在集成测试阶段自动启动 开始-->
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>8.1.16.v20140903</version>
+					<configuration>
+						<scanIntervalSeconds>5</scanIntervalSeconds>
+						<webApp>
+							<contextPath>/productAPI</contextPath>
+						</webApp>
+						<stopPort>9697</stopPort>
+						<stopKey>stop-jetty-for-it</stopKey>
+						<connectors>
+							<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+								<port>9696</port>
+							</connector>
+						</connectors>
+					</configuration>
+
+					<executions>
+						<execution>
+							<id>start-it-jetty</id>
+							<!--集成测试前启动jetty-->
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<daemon>true</daemon>
+							</configuration>
+						</execution>
+						<execution>
+							<id>stop-it-jetty</id>
+							<!--集成测试结束停止jetty-->
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>stop</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- 集成测试 开始-->
+				<!-- 运行命令:mvn integration-test  -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>run-integration-test</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>test</goal>
+							</goals>
+							<configuration>
+								<includes>
+									<include>**/*IT.java</include>
+								</includes>
+							</configuration>
+						</execution>
+						<!--<execution>
+                            <id>run-test</id>
+                            <phase>test</phase>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <configuration>
+                                <includes>
+                                    <include>**/*Test.java</include>
+                                </includes>
+                            </configuration>
+                        </execution>-->
+					</executions>
+				</plugin>
+				<!-- 集成测试 结束-->
+			</plugins>
+		</pluginManagement>
+
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<!--  资源根目录排除各环境的配置，使用单独的资源目录来指定  -->
+				<excludes>
+					<exclude>dev/*</exclude>
+					<exclude>test/*</exclude>
+					<exclude>pre/*</exclude>
+					<exclude>prod/*</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/main/resources/${env}</directory>
+			</resource>
+		</resources>
+	</build>
+</project>

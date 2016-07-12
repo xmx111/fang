@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<context:property-placeholder location="classpath*:/*.properties, classpath:app.properties"
+			ignore-resource-not-found="true" ignore-unresolvable="true" file-encoding="UTF-8"/>
+
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/template/" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="statics" value="#{T(freemarker.ext.beans.BeansWrapper).getDefaultInstance().getStaticModels()}"></entry>
+				<entry key="dicSelect">
+					<bean class="com.ufo.fang.center.web.tag.dic.DropDownSelectBox" />
+				</entry>
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<map>
+				<entry key="default_encoding" value="UTF-8"/>
+				<entry key="tag_syntax" value="auto_detect"/>
+				<entry key="auto_import" value="iframe/iframe.ftl as iframe"/>
+ 				<entry key="classic_compatible" value="true"/>
+				<entry key="date_format" value="yyyy-MM-dd"/>
+				<entry key="time_format" value="HH:mm:ss"/>
+				<entry key="datetime_format" value="yyyy-MM-dd HH:mm:ss"/>
+				<entry key="number_format" value="##0.##"/>
+			</map>
+		</property>
+	</bean>
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="cache" value="true"/>
+		<property name="suffix" value=".ftl" />
+		<property name="contentType" value="text/html;charset=UTF-8"/>
+		<property name="requestContextAttribute" value="request"/>
+	</bean>
+
+
+
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	            <property name="objectMapper" value="#{T(com.ufo.fang.common.util.JsonUtils).JSON_MAPPER}"/>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 需拦截的地址 -->
+            <mvc:mapping path="/**" />
+            <!-- 需排除拦截的地址 -->
+            <mvc:exclude-mapping path="/statics/**"/>
+            <mvc:exclude-mapping path="/favicon.ico"/>
+            <mvc:exclude-mapping path="/animated_favicon.gif"/>
+
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/login.html"/>
+            <bean class="com.ufo.fang.center.interceptor.SecurityInterceptor" />
+        </mvc:interceptor>
+
+	</mvc:interceptors>
+	
+	<context:component-scan base-package="com.hitao.*.center.web">
+		<context:exclude-filter type="regex" expression=".*TestCase"/>
+	</context:component-scan>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<mvc:resources mapping="/statics/**" location="/statics/"/>
+	<mvc:resources mapping="/favicon.ico" location="/statics/images/favicon.ico"/>
+	<mvc:resources mapping="/animated_favicon.gif" location="/statics/images/favicon.ico"/>
+	
+</beans>

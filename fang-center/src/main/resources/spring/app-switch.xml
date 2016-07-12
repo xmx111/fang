@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+           http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 创建connectionFactory -->
+	<!--<rabbit:connection-factory id="config.connectionFactory" executor="taskExecutor"-->
+		<!--username="${config.mq.rabbit.username}" password="${config.mq.rabbit.pwd}" addresses="${config.mq.rabbit.addresses}"/>-->
+	<!--&lt;!&ndash; 创建rabbitAdmin 代理类 &ndash;&gt;-->
+	<!--<rabbit:admin connection-factory="config.connectionFactory"/>-->
+    <!--<rabbit:listener-container connection-factory="config.connectionFactory" message-converter="jsonMessageConverter">  -->
+        <!--<rabbit:listener ref="config.rabbitMQReceiver" method="handleMessage"  -->
+            <!--queue-names="${config.mq.rabbit.queuename}" />-->
+    <!--</rabbit:listener-container>-->
+	<!--&lt;!&ndash; 用于接收消息的处理类 &ndash;&gt;-->
+	<!--<bean id="config.rabbitMQReceiver" class="com.hitao.allocation.sync.impl.ConfigSyncMessageListener">-->
+	<!--</bean>-->
+ <!---->
+    <!--&lt;!&ndash; 收集系统关心的服务，并纳入管理 &ndash;&gt;-->
+    <!--<bean class="com.hitao.allocation.collect.ServiceCollector">-->
+        <!--&lt;!&ndash; 配置服务端纳入管理的url &ndash;&gt;-->
+        <!--<property name="url" value="${allocation.management.url:http://cfg.hitao.api/hitao-allocation-main/admin/obeyManagement}"/>-->
+        <!--<property name="serviceItems">-->
+            <!--<set>-->
+                <!--&lt;!&ndash; 内存缓存写开关 &ndash;&gt;-->
+                <!--<bean class="com.hitao.allocation.collect.ServiceItem">-->
+                    <!--&lt;!&ndash; 服务接口全名，被管理的对象 &ndash;&gt;-->
+                    <!--<property name="name" value="hitao.ump.memcache.write"/>-->
+                    <!--&lt;!&ndash; 该服务接口的别名，便于用户使用 &ndash;&gt;-->
+                    <!--<property name="alias" value="memcache.write"/>-->
+                    <!--&lt;!&ndash; 默认配置 &ndash;&gt;-->
+                    <!--<property name="defaultValue" value="true"/>-->
+                <!--</bean>-->
+                <!--&lt;!&ndash; 内存缓存读开关 &ndash;&gt;-->
+                <!--<bean class="com.hitao.allocation.collect.ServiceItem">-->
+                    <!--&lt;!&ndash; 服务接口全名，被管理的对象 &ndash;&gt;-->
+                    <!--<property name="name" value="hitao.ump.memcache.read"/>-->
+                    <!--&lt;!&ndash; 该服务接口的别名，便于用户使用 &ndash;&gt;-->
+                    <!--<property name="alias" value="memcache.read"/>-->
+                    <!--&lt;!&ndash; 默认配置 &ndash;&gt;-->
+                    <!--<property name="defaultValue" value="true"/>-->
+                <!--</bean>-->
+                <!--&lt;!&ndash; 未勾选购物车商品查询优惠开关 &ndash;&gt;-->
+                <!--<bean class="com.hitao.allocation.collect.ServiceItem">-->
+                    <!--&lt;!&ndash; 服务接口全名，被管理的对象 &ndash;&gt;-->
+                    <!--<property name="name" value="hitao.ump.cart.promotion.unselect"/>-->
+                    <!--&lt;!&ndash; 该服务接口的别名，便于用户使用 &ndash;&gt;-->
+                    <!--<property name="alias" value="cart.unselect"/>-->
+                    <!--&lt;!&ndash; 默认配置 &ndash;&gt;-->
+                    <!--<property name="defaultValue" value="true"/>-->
+                <!--</bean>-->
+            <!--</set>-->
+        <!--</property>-->
+    <!--</bean>-->
+     <!---->
+    <!--&lt;!&ndash; 服务配置同步工具，用于在系统启动时主动拉取服务端的配置 &ndash;&gt;-->
+    <!--<bean class="com.hitao.allocation.sync.impl.HttpSynchronizer" init-method="startSync">-->
+        <!--&lt;!&ndash; 拉取服务端配置的url &ndash;&gt;-->
+        <!--<property name="url" value="${allocation.pull.url:http://cfg.hitao.api/hitao-allocation-main/sync/pullConfig}"/>-->
+    <!--</bean>-->
+</beans>

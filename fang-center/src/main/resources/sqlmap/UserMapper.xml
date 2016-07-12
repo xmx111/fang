@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ufo.fang.center.dao.user.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.User" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="fullname" property="fullname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobilephone" property="mobilephone" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="source_type" property="sourceType" jdbcType="BIGINT" />
+    <result column="source_id" property="sourceId" jdbcType="BIGINT" />
+    <result column="department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+    <result column="creator_name" property="creatorName" jdbcType="VARCHAR" />
+    <result column="modifier_name" property="modifierName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from demo_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.User" >
+    insert into demo_user (id, username, fullname, 
+      sex, password, email, 
+      mobilephone, status, source_type, 
+      source_id, department_id, gmt_create, 
+      gmt_modified, creator_name, modifier_name
+      )
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=TINYINT}, #{password,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{mobilephone,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{sourceType,jdbcType=BIGINT}, 
+      #{sourceId,jdbcType=BIGINT}, #{departmentId,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{creatorName,jdbcType=VARCHAR}, #{modifierName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.User" >
+    update demo_user
+    set username = #{username,jdbcType=VARCHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=TINYINT},
+      password = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mobilephone = #{mobilephone,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      source_type = #{sourceType,jdbcType=BIGINT},
+      source_id = #{sourceId,jdbcType=BIGINT},
+      department_id = #{departmentId,jdbcType=BIGINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      creator_name = #{creatorName,jdbcType=VARCHAR},
+      modifier_name = #{modifierName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, username, fullname, sex, password, email, mobilephone, status, source_type, 
+    source_id, department_id, gmt_create, gmt_modified, creator_name, modifier_name
+    from demo_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, username, fullname, sex, password, email, mobilephone, status, source_type, 
+    source_id, department_id, gmt_create, gmt_modified, creator_name, modifier_name
+    from demo_user
+  </select>
+  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select id, username, fullname, sex, password, email, mobilephone, status, source_type, 
+    source_id, department_id, gmt_create, gmt_modified, creator_name, modifier_name
+    from demo_user
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List" >
+    insert into demo_user (id, 
+      username, fullname, sex, 
+      password, email, mobilephone, 
+      status, source_type, source_id, 
+      department_id, gmt_create, gmt_modified, 
+      creator_name, modifier_name)
+    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+      #{item.username,jdbcType=VARCHAR}, #{item.fullname,jdbcType=VARCHAR}, #{item.sex,jdbcType=TINYINT}, 
+      #{item.password,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, #{item.mobilephone,jdbcType=VARCHAR}, 
+      #{item.status,jdbcType=TINYINT}, #{item.sourceType,jdbcType=BIGINT}, #{item.sourceId,jdbcType=BIGINT}, 
+      #{item.departmentId,jdbcType=BIGINT}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}, 
+      #{item.creatorName,jdbcType=VARCHAR}, #{item.modifierName,jdbcType=VARCHAR}</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List" >
+    delete from demo_user
+    where id in 
+    <foreach collection="list" item="id" open="(" close=")" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+</mapper>

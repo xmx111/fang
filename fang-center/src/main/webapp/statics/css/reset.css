@@ -1,0 +1,176 @@
+/*
+reset.css
+based on yui's css reset
+*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+	margin: 0;
+	padding: 0;
+	font-family: 'Microsoft Yahei';
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset,img {
+	border: none;
+}
+address,caption,cite,code,dfn,em,th,var {
+	font-style: normal;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+caption,th {
+	text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+}
+q:before,q:after {
+	content: '';
+}
+abbr,acronym {
+	border: none;
+	font-variant: normal;
+}
+/* to preserve line-height and selector appearance */
+sup {
+	vertical-align: text-top;
+}
+sub {
+	vertical-align: text-bottom;
+}
+input,button,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+/*to enable resizing for IE*/
+input,button,textarea,select {
+	*font-size: 100%;
+}
+
+del,ins {
+	text-decoration: none;
+}
+
+/**
+ * 默认情况下，small的字号比默认小，这里reset掉，抹平差异
+ * 对于中文默认为12px时，让small也12px非常有必要。小于12px的中文字很难识别
+ */
+small {
+    font-size: 100%;
+}
+
+/* bug fix: 解决Chrome和Safari下选取文字时，背景区域不对的bug */
+body:first-of-type {
+    position: relative;
+}
+
+/* 让非ie浏览器默认也显示垂直滚动条，防止因滚动条引起的闪烁等 */
+html {
+    /*min-height: 101%; 这个方法不好，不是想要的效果 */
+
+    overflow-y: scroll; /* 在opera下会同时触发水平滚动条，但考虑opera的用户数，也就可以忽略了 */
+
+	/*overflow: -moz-scrollbars-vertical; 这个方法只针对firefox
+    overflow-x: auto; 上面一行会将overflow-x干掉，因此这里重设回来
+    ref: http://developer.mozilla.org/en/docs/Mozilla_CSS_Extensions#overflow */
+}
+
+/***********************************************
+ * Fonts
+ ***********************************************/
+body, button, input, select, textarea {
+    font: 12px/1.5 "微软雅黑",\5b8b\4f53;
+}
+
+/**
+ * To help tables remember to inherit
+ */
+table {
+	font-size: inherit;
+	font: 100%;
+}
+
+/* legend doesn't inherit in IE */
+body, legend {
+	color: #333;
+}
+
+/*a:link, a:visited {*/
+a {
+	color: #036;
+	text-decoration: none;
+}
+/*a:hover, a:active {*/
+a:hover {
+	color: #f04e63;
+	text-decoration: underline;
+}
+
+abbr,acronym {
+	/* indicating to users that more info is available */
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+hr {
+    color: #D1D7DC;
+    background-color: #D1D7DC;
+    border: none;
+    height: 1px;
+
+}
+
+/***********************************************
+ * Common Class
+ ***********************************************/
+.hidden {
+    display: none;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+/* hightlight */
+.hightlight {
+    color: #f04e63 !important;
+}
+
+.floatleft { float: left !important; }
+.floatright { float: right !important; }
+
+.clearfix:after {
+    content: '\0020';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.clear{
+    clear: both;
+    height: 0;
+	font-size: 0;
+	visibility: hidden;
+}
+
+.clearfix { *zoom : 1; }
+
+/***********************************************
+ * More Link
+ ***********************************************/
+.more {
+    background: none;
+    padding-right: 5px;
+}
+
+.strong{
+	font-weight:bold !important;
+}
+

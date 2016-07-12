@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!--<dubbo:application name="${dubbo.app.name}" />-->
+	<!--<dubbo:monitor protocol="registry">-->
+		<!--<dubbo:parameter key="interval" value="10000" />-->
+	<!--</dubbo:monitor>-->
+	<!--<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"-->
+		<!--file="${dubbo.app.name}.properties" />-->
+	<!--&lt;!&ndash; 走注册中心 &ndash;&gt;-->
+	<!--&lt;!&ndash; 注意：dubbo:application,dubbo:registry与客户端共存时，只需配置一次，否则会抛出异常 &ndash;&gt;-->
+	<!--<dubbo:protocol name="rmi2" port="-1" />-->
+	<!--<dubbo:provider protocol="dubbo" port="-1" threadpool="fixed"-->
+		<!--filter="-exception,frameworkExceptionFilter,trackInterceptor" threads="500" />-->
+
+	<!--<dubbo:service interface="com.hitao.ump.service.UmpFacadeService"-->
+		<!--group="${dubbo.ump.group:ump}" version="${dubbo.ump.version:1.0.0}"-->
+		<!--ref="umpFacadeServiceImpl" timeout="${dubbo.ump.timeout:10000}" />-->
+	<!--<dubbo:service interface="com.hitao.ump.service.UmpOrderFacadeService"-->
+		<!--group="${dubbo.ump.group:ump}" version="${dubbo.ump.version:1.0.0}"-->
+		<!--ref="umpOrderFacadeServiceImpl" timeout="${dubbo.ump.timeout:10000}" />-->
+
+	<!--<context:component-scan-->
+		<!--base-package="com.hitao.*.center.facadeservice">-->
+		<!--<context:exclude-filter type="regex"-->
+			<!--expression=".*TestCase" />-->
+	<!--</context:component-scan>-->
+</beans>

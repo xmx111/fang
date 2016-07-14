@@ -1,5 +1,6 @@
 package com.ufo.fang.common.web;
 
+import com.ufo.fang.common.exceptions.ServiceException;
 import com.ufo.fang.common.mybatis.pagehelper.PageList;
 import com.ufo.fang.common.service.BaseService;
 import com.ufo.fang.common.web.easyui.DataGridResult;
@@ -34,7 +35,7 @@ public abstract class BaseTemplateAction<T, ID> extends BaseAction {
      * @param t
      * @return
      */
-    protected Object add(T t){
+    protected Object add(T t) throws ServiceException {
         getService().add(t);
         return success(true);
     }
@@ -44,7 +45,7 @@ public abstract class BaseTemplateAction<T, ID> extends BaseAction {
      * @param t
      * @return
      */
-    protected Object modify(T t){
+    protected Object modify(T t) throws ServiceException {
         getService().modify(t);
         return success(true);
     }
@@ -54,7 +55,7 @@ public abstract class BaseTemplateAction<T, ID> extends BaseAction {
      * @param id
      * @return
      */
-    protected Object delete(ID id){
+    protected Object delete(ID id) throws ServiceException {
         getService().delete(id);
         return success(true);
     }
@@ -64,7 +65,7 @@ public abstract class BaseTemplateAction<T, ID> extends BaseAction {
      * @param ids
      * @return
      */
-    protected Object delete(List<ID> ids){
+    protected Object delete(List<ID> ids) throws ServiceException {
         Map<ID, String> errorMessageMap = new LinkedHashMap();
         //对于批量删除,循环每个对象调用Service接口删除
         //这样可以方便某些对象删除失败不影响其他对象删除

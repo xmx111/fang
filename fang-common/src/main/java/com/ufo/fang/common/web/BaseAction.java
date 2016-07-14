@@ -156,7 +156,6 @@ public abstract class BaseAction {
      */
     @InitBinder
     public void binder(WebDataBinder binder) {
-        //java.util.Date
         DatePropertyEdit datePropertyEditor = new DatePropertyEdit(java.util.Date.class);
         binder.registerCustomEditor(java.util.Date.class, datePropertyEditor);
     }

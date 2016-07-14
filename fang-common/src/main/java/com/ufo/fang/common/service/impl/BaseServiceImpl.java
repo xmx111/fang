@@ -1,6 +1,7 @@
 package com.ufo.fang.common.service.impl;
 
 import com.ufo.fang.common.dao.BaseDAO;
+import com.ufo.fang.common.exceptions.ServiceException;
 import com.ufo.fang.common.mybatis.pagehelper.PageList;
 import com.ufo.fang.common.service.BaseService;
 import org.apache.logging.log4j.LogManager;
@@ -23,37 +24,74 @@ public abstract class BaseServiceImpl<T, ID> implements BaseService<T, ID> {
     abstract protected BaseDAO<T, ID> getDAO();
 
     @Override
-    public int add(T model) {
-        return getDAO().insert(model);
+    public int add(T model) throws ServiceException {
+        try {
+            return getDAO().insert(model);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public int modify(T model) {
-        return getDAO().update(model);
+    public int modify(T model) throws ServiceException {
+        try {
+            return getDAO().update(model);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public int delete(ID id) {
-        return getDAO().deleteById(id);
+    public int delete(ID id) throws ServiceException {
+        try {
+            return getDAO().deleteById(id);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public T queryById(ID id) {
-        return getDAO().selectById(id);
+    public T queryById(ID id) throws ServiceException {
+        try {
+            return getDAO().selectById(id);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public PageList<T> queryForPage(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize) {
-        return getDAO().executeQueryForList(parameterObject, pageNum, pageSize);
+    public PageList<T> queryForPage(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize) throws ServiceException {
+        try {
+            return getDAO().executeQueryForList(parameterObject, pageNum, pageSize);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public int batchAdd(List<T> model) {
-        return getDAO().batchInsert(model);
+    public PageList<T> queryForPageSum(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize) throws ServiceException {
+        try {
+            return getDAO().executeQueryForSumList(parameterObject, pageNum, pageSize);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 
     @Override
-    public int batchDelete(List<ID> ids) {
-        return getDAO().batchDelete(ids);
+    public int batchAdd(List<T> model) throws ServiceException {
+        try {
+            return getDAO().batchInsert(model);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public int batchDelete(List<ID> ids) throws ServiceException {
+        try {
+            return getDAO().batchDelete(ids);
+        } catch (Throwable e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 }

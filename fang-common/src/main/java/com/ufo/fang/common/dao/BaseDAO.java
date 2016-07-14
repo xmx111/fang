@@ -61,7 +61,7 @@ public interface BaseDAO<T, ID> {
      * @param pageSize
      * @return
      */
-    public PageList<T> executeQueryForList(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize);
+    PageList<T> executeQueryForList(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize);
 
     /**
      * 分页查询(有合计)
@@ -70,7 +70,7 @@ public interface BaseDAO<T, ID> {
      * @param pageSize
      * @return
      */
-    public PageList<T> executeQueryForSumList(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize);
+    PageList<T> executeQueryForSumList(Map<String, Object> parameterObject, Integer pageNum, Integer pageSize);
 
     /**
      * 批量新增

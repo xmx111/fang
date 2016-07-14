@@ -93,8 +93,8 @@
 			<artifactId>mybatis-spring</artifactId>
 		</dependency>
 		<dependency>
-				<groupId>org.mybatis.generator</groupId>
-				<artifactId>mybatis-generator-core</artifactId>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
 		</dependency>
 		<dependency>
 		    <groupId>com.github.pagehelper</groupId>
@@ -230,8 +230,8 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
+						<source>1.7</source>
+						<target>1.7</target>
 						<encoding>utf8</encoding>
 					</configuration>
 				</plugin>

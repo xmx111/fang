@@ -11,7 +11,7 @@
 		<!-- 为生成的Java模型创建一个toString方法 -->
 		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
 		<!-- Mapper加方法、sql: selectByParameters batchInsert batchDelete -->
-		<plugin type="com.hitao.generator.mybatis.plugins.MapperPluginAdapter">
+		<plugin type="com.ufo.generator.mybatis.plugins.MapperPluginAdapter">
 			<!-- 是否加入mybatis配置文件 -->
 			<property name="isAddConfiguration" value="true" />
 			<property name="fileName" value="mybatis-configuration.xml" />
@@ -19,16 +19,16 @@
 			<property name="targetProject" value="src/main/resources" />
 		</plugin>
 		<!-- 生成CURD的fm,js,action,service,dao文件 -->
-		<plugin type="com.hitao.generator.mybatis.plugins.CURDPluginAdapter">
+		<plugin type="com.ufo.generator.mybatis.plugins.CURDPluginAdapter">
 			<!-- 生成哪几类文件(fm,js,action,service,dao)，如不设置默认不生成，可选择部分，比如只生成service和dao：value="service,dao" -->
 			<property name="genFilesType" value="page,js,action,service,dao" />
 			<!-- 生成的文件模式：extend继承（默认），duplicate复本 -->
-			<property name="genFilesModal" value="duplicate" />
+			<property name="genFilesModal" value="extend" />
 			<!-- 为了避免生成覆盖已改动的代码，如不设置，默认target/generated-code，可以设置为src -->
 			<property name="genTargetSrcPath" value="src" />
 		</plugin>
 		<!-- 自定义生成注释 -->
-		<commentGenerator type="com.hitao.generator.mybatis.generator.HTCommentGenerator" />
+		<commentGenerator type="com.ufo.generator.mybatis.generator.HTCommentGenerator" />
 
 		<!-- 数据库配置 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
@@ -36,7 +36,7 @@
 			userId="root" password="" />
 
 		<!-- java类型处理器，覆盖Tinyint转Byte为转Integer-->
-		<javaTypeResolver type="com.hitao.generator.mybatis.types.HTJavaTypeResolverImpl" />
+		<javaTypeResolver type="com.ufo.generator.mybatis.types.HTJavaTypeResolverImpl" />
 		<!--model生成位置-->
 		<javaModelGenerator targetPackage="com.ufo.fang.center.model"
 			targetProject="src/main/java">
@@ -50,9 +50,9 @@
 		</sqlMapGenerator>
 		<!--mapper生成位置，type为自定义生成器-->
 		<javaClientGenerator targetPackage="com.ufo.fang.center.dao.mapper"
-			targetProject="src/main/java" type="com.hitao.generator.mybatis.javamapper.HTJavaClientGenerator">
+			targetProject="src/main/java" type="com.ufo.generator.mybatis.javamapper.HTJavaClientGenerator">
 			<property name="enableSubPackages" value="true" />
-			<!--<property name="rootInterface" value="com.ufo.fang.common.dao.mapper.BaseMapper"/>&lt;!&ndash; mapper是否继承模式 &ndash;&gt;-->
+			<property name="rootInterface" value="com.ufo.fang.common.dao.mapper.BaseMapper"/><!-- mapper是否继承模式 -->
 		</javaClientGenerator>
 
 		<!--

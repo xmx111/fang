@@ -20,9 +20,6 @@ import java.util.Map;
  */
 public abstract class BaseDAOImpl<T, ID> implements BaseDAO<T, ID> {
 
-//    @Resource
-//    private SqlSession sqlSession;
-
     protected final Logger logger = LogManager.getLogger(this.getClass());
 
     /** 子类设置具体的DAO对象实例 */

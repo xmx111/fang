@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ufo.fang.center.dao.collectwebsite.mapper.CollectWebsiteMapper" >
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.CollectWebsite" >
+    <id column="t_id" property="id" jdbcType="BIGINT" />
+    <result column="t_name" property="name" jdbcType="BIGINT" />
+    <result column="t_url" property="url" jdbcType="VARCHAR" />
+    <result column="t_icon" property="icon" jdbcType="VARCHAR" />
+    <result column="t_create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="t_modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_collect_website
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.CollectWebsite" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_collect_website (id, name, url, 
+      icon, create_time, modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=BIGINT}, #{url,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.CollectWebsite" >
+    update t_collect_website
+    set name = #{name,jdbcType=BIGINT},
+      url = #{url,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select t.id as t_id, t.name as t_name, t.url as t_url, t.icon as t_icon, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_collect_website t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select t.id as t_id, t.name as t_name, t.url as t_url, t.icon as t_icon, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_collect_website t
+  </select>
+  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select t.id as t_id, t.name as t_name, t.url as t_url, t.icon as t_icon, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_collect_website t
+  </select>
+  <select id="selectByPageList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select t.id as t_id, t.name as t_name, t.url as t_url, t.icon as t_icon, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_collect_website t
+  </select>
+  <select id="selectByPageListSum" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+    select count(1) as totalNum  ,sum(t.name as t_name)
+    from t_collect_website t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List" >
+    insert into t_collect_website (id, 
+      name, url, icon, 
+      create_time, modify_time)
+    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+      #{item.name,jdbcType=BIGINT}, #{item.url,jdbcType=VARCHAR}, #{item.icon,jdbcType=VARCHAR}, 
+      #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List" >
+    delete from t_collect_website
+    where id in 
+    <foreach collection="list" item="id" open="(" close=")" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+</mapper>

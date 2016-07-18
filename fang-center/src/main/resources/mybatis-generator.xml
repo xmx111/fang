@@ -32,7 +32,7 @@
 
 		<!-- 数据库配置 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/ht_framework_demo?characterEncoding=utf8"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/ufo_fang?characterEncoding=utf8"
 			userId="root" password="" />
 
 		<!-- java类型处理器，覆盖Tinyint转Byte为转Integer-->
@@ -64,7 +64,25 @@
 		-->
 		<!--<table tableName="demo_dictionary" domainObjectName="Dictionary">-->
 		<!--</table>-->
-		<table tableName="demo_user" domainObjectName="User" alias="t">
+		<table tableName="t_agent_third_account" domainObjectName="AgentThirdAccount" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_china_area" domainObjectName="ChinaArea" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_collect_website" domainObjectName="CollectWebsite" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_dictionary" domainObjectName="Dictionary" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_grading" domainObjectName="Grading" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_grading_info" domainObjectName="GradingInfo" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_house_count" domainObjectName="HouseCount" alias="t">
 			<generatedKey column="id" sqlStatement="Mysql"/>
 		</table>
 	</context>

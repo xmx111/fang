@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ufo.fang.center.dao.housecount.mapper.HouseCountMapper" >
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.HouseCount" >
+    <id column="t_id" property="id" jdbcType="BIGINT" />
+    <result column="t_house_id" property="houseId" jdbcType="BIGINT" />
+    <result column="t_click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="t_collect_num" property="collectNum" jdbcType="INTEGER" />
+    <result column="t_inform_num" property="informNum" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_house_count
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.HouseCount" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_house_count (id, house_id, click_num, 
+      collect_num, inform_num)
+    values (#{id,jdbcType=BIGINT}, #{houseId,jdbcType=BIGINT}, #{clickNum,jdbcType=INTEGER}, 
+      #{collectNum,jdbcType=INTEGER}, #{informNum,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.HouseCount" >
+    update t_house_count
+    set house_id = #{houseId,jdbcType=BIGINT},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      collect_num = #{collectNum,jdbcType=INTEGER},
+      inform_num = #{informNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select t.id as t_id, t.house_id as t_house_id, t.click_num as t_click_num, t.collect_num as t_collect_num, 
+    t.inform_num as t_inform_num
+    from t_house_count t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select t.id as t_id, t.house_id as t_house_id, t.click_num as t_click_num, t.collect_num as t_collect_num, 
+    t.inform_num as t_inform_num
+    from t_house_count t
+  </select>
+  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select t.id as t_id, t.house_id as t_house_id, t.click_num as t_click_num, t.collect_num as t_collect_num, 
+    t.inform_num as t_inform_num
+    from t_house_count t
+  </select>
+  <select id="selectByPageList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select t.id as t_id, t.house_id as t_house_id, t.click_num as t_click_num, t.collect_num as t_collect_num, 
+    t.inform_num as t_inform_num
+    from t_house_count t
+  </select>
+  <select id="selectByPageListSum" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+    select count(1) as totalNum 
+    from t_house_count t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List" >
+    insert into t_house_count (id, 
+      house_id, click_num, collect_num, 
+      inform_num)
+    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+      #{item.houseId,jdbcType=BIGINT}, #{item.clickNum,jdbcType=INTEGER}, #{item.collectNum,jdbcType=INTEGER}, 
+      #{item.informNum,jdbcType=INTEGER}</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List" >
+    delete from t_house_count
+    where id in 
+    <foreach collection="list" item="id" open="(" close=")" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+</mapper>

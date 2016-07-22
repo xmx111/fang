@@ -6,7 +6,7 @@
 	
 	<context-param>
         <param-name>webAppRootKey</param-name>  
-        <param-value>hitao-demo-center</param-value>
+        <param-value>fang-center</param-value>
     </context-param>
     
     <context-param>
@@ -40,7 +40,7 @@
 	
 	<filter>
 	    <filter-name>xssFilter</filter-name>
-	    <filter-class>com.hitao.framework.mvc.xss.XssFilter</filter-class>
+	    <filter-class>com.ufo.fang.common.mvc.xss.XssFilter</filter-class>
 	</filter>
 	<filter-mapping>
 	    <filter-name>xssFilter</filter-name>
@@ -55,7 +55,7 @@
 	</listener>
 	
 	<servlet>
-		<servlet-name>hitao-demo-center</servlet-name>
+		<servlet-name>fang-center</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>  
 	        <param-name>dispatchOptionsRequest</param-name>  
@@ -70,7 +70,7 @@
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>hitao-demo-center</servlet-name>
+		<servlet-name>fang-center</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	

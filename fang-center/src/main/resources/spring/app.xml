@@ -99,16 +99,13 @@
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.hitao.*.center.dao.mapper, com.hitao.*.center.dao.*.mapper" />
+		<property name="basePackage" value="com.ufo.*.center.dao.mapper, com.ufo.*.center.dao.*.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-
-	<!-- api认证拦截器 -->
-	<bean class="com.hitao.framework.http.HttpClient" />
 	
 	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
 	<!--<bean id="multipartResolver"-->
@@ -132,16 +129,16 @@
         <!--</property>  -->
     <!--</bean>-->
 
-	<bean id="demoJedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<property name="maxTotal" value="${redis.pool.maxTotal:1000}" />
 		<property name="maxIdle" value="${redis.pool.maxIdle:500}" />
 		<property name="maxWaitMillis" value="${redis.pool.maxWaitMillis:1000}" />
 		<property name="testOnBorrow" value="${redis.pool.testOnBorrow:true}" />
 	</bean>
-	<bean id="demoRedisCache" class="com.hitao.framework.cache.RedisCache">
+	<bean id="demoRedisCache" class="com.ufo.fang.common.cache.impl.RedisCache">
 		<property name="pool">
 			<bean class="redis.clients.jedis.JedisPool">
-				<constructor-arg name="poolConfig" ref="demoJedisPoolConfig"/>
+				<constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
 				<constructor-arg name="host" value="${redis.host}" />
 				<constructor-arg name="port" value="${redis.port:6379}" />
 				<constructor-arg name="timeout" value="${redis.timeout:2000}" />
@@ -151,7 +148,7 @@
 		</property>
 	</bean>
 
-	<context:component-scan base-package="com.hitao.*.center,com.hitao.*.service,com.hitao.*.cache,com.hitao.*.common.cache">
+	<context:component-scan base-package="com.ufo.*.center,com.ufo.*.service,com.ufo.*.cache,com.ufo.*.common.cache">
  		<context:exclude-filter type="regex"
  			expression=".*TestCase" />
  		<context:exclude-filter type="regex"
@@ -159,18 +156,5 @@
  		<context:exclude-filter type="regex" 
  			expression=".*\.dao\..*Dao"/>
  	</context:component-scan>
- 	
-
-	<import resource="classpath:spring/memcache.xml" />
-	<!-- <import resource="classpath:hitao-ump-center/spring/app-switch.xml" /> -->
-
-	<!--<import resource="classpath:spring/rabbitmq.xml" />-->
-
-	<beans profile="default">
-		<import resource="classpath:spring/dubbo.xml" />
-	</beans>
-	<beans profile="plat">
-		<import resource="classpath:spring/dubbo.xml" />
-	</beans>
 	
 </beans>

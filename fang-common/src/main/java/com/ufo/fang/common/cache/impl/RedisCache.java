@@ -42,7 +42,7 @@ public class RedisCache {
         try {
             info = jedis.info(section != null && !section.isEmpty()?section:"default");
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         LinkedHashMap result = new LinkedHashMap();
@@ -101,7 +101,7 @@ public class RedisCache {
         try {
             var4 = jedis.exists(key).booleanValue();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -114,20 +114,20 @@ public class RedisCache {
         try {
             var5 = jedis.expire(key, seconds);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var5;
     }
 
-    public Long pexpire(String key, int milliseconds) {
+    public Long pexpire(String key, long milliseconds) {
         Jedis jedis = this.pool.getResource();
 
         Long var5;
         try {
             var5 = jedis.pexpire(key, milliseconds);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var5;
@@ -140,7 +140,7 @@ public class RedisCache {
         try {
             var4 = jedis.ttl(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -153,7 +153,7 @@ public class RedisCache {
         try {
             var4 = jedis.get(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -165,7 +165,7 @@ public class RedisCache {
         try {
             jedis.set(key, value);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -176,7 +176,7 @@ public class RedisCache {
         try {
             jedis.setex(key, seconds, value);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -187,7 +187,7 @@ public class RedisCache {
         try {
             jedis.del(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -198,7 +198,7 @@ public class RedisCache {
         try {
             jedis.del(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -210,7 +210,7 @@ public class RedisCache {
         try {
             var4 = jedis.keys(pattern);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -223,7 +223,7 @@ public class RedisCache {
         try {
             var4 = jedis.hkeys(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -236,7 +236,7 @@ public class RedisCache {
         try {
             var4 = jedis.hgetAll(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -249,7 +249,7 @@ public class RedisCache {
         try {
             var5 = jedis.hget(key, field);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var5;
@@ -271,7 +271,7 @@ public class RedisCache {
         try {
             var11 = var10.hmget(key, (String[])list.toArray(new String[list.size()]));
         } finally {
-            this.pool.returnResource(var10);
+            this.pool.close();
         }
 
         return var11;
@@ -284,7 +284,7 @@ public class RedisCache {
         try {
             var5 = jedis.hdel(key, new String[]{field});
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var5;
@@ -296,7 +296,7 @@ public class RedisCache {
         try {
             jedis.hmset(key, hash);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -307,7 +307,7 @@ public class RedisCache {
         try {
             jedis.hset(key, field, value);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -319,7 +319,7 @@ public class RedisCache {
         try {
             var6 = jedis.hsetnx(key, field, value).longValue() == 1L;
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var6;
@@ -331,7 +331,7 @@ public class RedisCache {
         try {
             jedis.lpush(key, values);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -342,7 +342,7 @@ public class RedisCache {
         try {
             jedis.rpush(key, values);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -354,7 +354,7 @@ public class RedisCache {
         try {
             var6 = jedis.lrange(key, (long)offset, (long)end);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var6;
@@ -367,7 +367,7 @@ public class RedisCache {
         try {
             var4 = jedis.llen(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -380,7 +380,7 @@ public class RedisCache {
         try {
             var4 = jedis.rpop(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -393,7 +393,7 @@ public class RedisCache {
         try {
             var4 = jedis.lpop(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -405,7 +405,7 @@ public class RedisCache {
         try {
             jedis.sadd(key, new String[]{member});
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -417,7 +417,7 @@ public class RedisCache {
         try {
             var4 = jedis.spop(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -430,7 +430,7 @@ public class RedisCache {
         try {
             var4 = jedis.scard(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -443,7 +443,7 @@ public class RedisCache {
         try {
             var5 = jedis.sismember(key, member).booleanValue();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var5;
@@ -455,7 +455,7 @@ public class RedisCache {
         try {
             jedis.zadd(key, score, member);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -467,7 +467,7 @@ public class RedisCache {
         try {
             var6 = jedis.zrange(key, (long)offset, (long)end);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var6;
@@ -480,7 +480,7 @@ public class RedisCache {
         try {
             var6 = jedis.zrevrange(key, (long)offset, (long)end);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var6;
@@ -535,7 +535,7 @@ public class RedisCache {
         try {
             jedis.setex(key, seconds, json);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -563,7 +563,7 @@ public class RedisCache {
 
             var7 = value;
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var7;
@@ -581,7 +581,7 @@ public class RedisCache {
 
             var8 = value;
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var8;
@@ -599,7 +599,7 @@ public class RedisCache {
 
             var7 = value;
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var7;
@@ -617,7 +617,7 @@ public class RedisCache {
 
             var8 = value;
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var8;
@@ -635,7 +635,7 @@ public class RedisCache {
 
             pipeline.sync();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -650,7 +650,7 @@ public class RedisCache {
             pipeline.sync();
             var7 = (List)response.get();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var7;
@@ -663,7 +663,7 @@ public class RedisCache {
         try {
             var4 = jedis.hlen(key);
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var4;
@@ -679,7 +679,7 @@ public class RedisCache {
             pipeline.sync();
             var6 = (List)response.get();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
         return var6;
@@ -693,7 +693,7 @@ public class RedisCache {
             pipeline.lpush(key, keys);
             pipeline.sync();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -706,7 +706,7 @@ public class RedisCache {
             pipeline.mset(keysvalues);
             pipeline.sync();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -719,7 +719,7 @@ public class RedisCache {
             pipeline.del(keys);
             pipeline.sync();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }
@@ -732,7 +732,7 @@ public class RedisCache {
             pipeline.hdel(key, fields);
             pipeline.sync();
         } finally {
-            this.pool.returnResource(jedis);
+            this.pool.close();
         }
 
     }

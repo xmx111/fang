@@ -4,6 +4,7 @@ import com.ufo.fang.common.exceptions.ServiceException;
 import com.ufo.fang.common.mybatis.pagehelper.PageList;
 import com.ufo.fang.common.service.BaseService;
 import com.ufo.fang.common.web.easyui.DataGridResult;
+import com.ufo.fang.common.web.jqgrid.PageDataGridResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -103,9 +104,27 @@ public abstract class BaseTemplateAction<T, ID> extends BaseAction {
             result.setTotal(pageList.getTotal());
             result.setRows(pageList.getList());
             if (pageList.getFooter() == null)
-                result.setFooter(new ArrayList<>());
+                result.setFooter(new ArrayList<T>());
             else
                 result.addFooter(pageList.getFooter());
+        }
+        return result;
+    }
+
+    /**
+     * 转为DataGridResult对象
+     * @param pageList
+     * @return
+     */
+    protected PageDataGridResult gridPageResult(PageList<T> pageList){
+        PageDataGridResult result = null;
+        if (pageList.getTotal() != 0){
+            result = new PageDataGridResult();
+            result.setPage(pageList.getPageNum());
+            result.setTotal(pageList.getPages());
+            result.setRecords(pageList.getTotal());
+            result.setRows(pageList.getList());
+            result.setUserdata(pageList.getFooter());
         }
         return result;
     }

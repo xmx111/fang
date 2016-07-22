@@ -82,7 +82,7 @@ public class CacheServerFactory {
                     return null;
                 if(isTrace)
                     logger.debug(NO_CACHE_LEVEL+" GET keys="+key);
-                List<T> list = new ArrayList<>();
+                List<T> list = new ArrayList<T>();
                 return list;
             }
 

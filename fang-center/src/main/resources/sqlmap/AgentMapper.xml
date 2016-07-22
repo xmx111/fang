@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ufo.fang.center.dao.agent.mapper.AgentMapper" >
-  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Agent" >
-    <id column="t_id" property="id" jdbcType="BIGINT" />
-    <result column="t_name" property="name" jdbcType="VARCHAR" />
-    <result column="t_moblie" property="moblie" jdbcType="VARCHAR" />
-    <result column="t_password" property="password" jdbcType="VARCHAR" />
-    <result column="t_create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="t_modify_time" property="modifyTime" jdbcType="CHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufo.fang.center.dao.agent.mapper.AgentMapper">
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Agent">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_name" jdbcType="VARCHAR" property="name" />
+    <result column="t_moblie" jdbcType="VARCHAR" property="moblie" />
+    <result column="t_password" jdbcType="VARCHAR" property="password" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_modify_time" jdbcType="CHAR" property="modifyTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_agent
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.ufo.fang.center.model.Agent" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Agent">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_agent (id, name, moblie, 
@@ -24,7 +24,7 @@
       #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=CHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Agent" >
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Agent">
     update t_agent
     set name = #{name,jdbcType=VARCHAR},
       moblie = #{moblie,jdbcType=VARCHAR},
@@ -33,43 +33,43 @@
       modify_time = #{modifyTime,jdbcType=CHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select t.id as t_id, t.name as t_name, t.moblie as t_moblie, t.password as t_password, 
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent t
     where t.id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
     select t.id as t_id, t.name as t_name, t.moblie as t_moblie, t.password as t_password, 
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent t
   </select>
-  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.name as t_name, t.moblie as t_moblie, t.password as t_password, 
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent t
   </select>
-  <select id="selectByPageList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.name as t_name, t.moblie as t_moblie, t.password as t_password, 
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent t
   </select>
-  <select id="selectByPageListSum" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
     select count(1) as totalNum 
     from t_agent t
   </select>
-  <insert id="batchInsert" parameterType="java.util.List" >
+  <insert id="batchInsert" parameterType="java.util.List">
     insert into t_agent (id, 
       name, moblie, password, 
       create_time, modify_time)
-    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT},
       #{item.name,jdbcType=VARCHAR}, #{item.moblie,jdbcType=VARCHAR}, #{item.password,jdbcType=VARCHAR}, 
-      #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=CHAR}</foreach>
+      #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=CHAR})</foreach>
   </insert>
-  <delete id="batchDelete" parameterType="java.util.List" >
+  <delete id="batchDelete" parameterType="java.util.List">
     delete from t_agent
     where id in 
-    <foreach collection="list" item="id" open="(" close=")" separator=",">
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
       ${id}
     </foreach>
   </delete>

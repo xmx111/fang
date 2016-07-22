@@ -3,8 +3,8 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=8" />
     <meta charset="utf-8" />
-    <title>嗨淘网-ERP管理系统</title>
-    <link rel="icon" href="http://img01.taobaocdn.com/tps/i1/T1aEtTXe4mXXXXXXXX-16-16.png" type="image/x-icon" />
+    <title>ERP管理系统</title>
+    <#--<link rel="icon" href="http://img01.taobaocdn.com/tps/i1/T1aEtTXe4mXXXXXXXX-16-16.png" type="image/x-icon" />-->
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="stylesheet" type="text/css" href="/statics/css/css.css"/>

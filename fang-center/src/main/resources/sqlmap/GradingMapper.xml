@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ufo.fang.center.dao.grading.mapper.GradingMapper" >
-  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Grading" >
-    <id column="t_id" property="id" jdbcType="BIGINT" />
-    <result column="t_code" property="code" jdbcType="VARCHAR" />
-    <result column="t_name" property="name" jdbcType="VARCHAR" />
-    <result column="t_another_name" property="anotherName" jdbcType="VARCHAR" />
-    <result column="t_status" property="status" jdbcType="INTEGER" />
-    <result column="t_province" property="province" jdbcType="INTEGER" />
-    <result column="t_city" property="city" jdbcType="INTEGER" />
-    <result column="t_district" property="district" jdbcType="INTEGER" />
-    <result column="t_cbd" property="cbd" jdbcType="INTEGER" />
-    <result column="t_estate_type" property="estateType" jdbcType="INTEGER" />
-    <result column="t_estate_addr" property="estateAddr" jdbcType="VARCHAR" />
-    <result column="t_position_describe1" property="positionDescribe1" jdbcType="VARCHAR" />
-    <result column="t_position_describe2" property="positionDescribe2" jdbcType="VARCHAR" />
-    <result column="t_room_drawing" property="roomDrawing" jdbcType="BIGINT" />
-    <result column="t_map_drawing" property="mapDrawing" jdbcType="BIGINT" />
-    <result column="t_create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="t_modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufo.fang.center.dao.grading.mapper.GradingMapper">
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Grading">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_name" jdbcType="VARCHAR" property="name" />
+    <result column="t_another_name" jdbcType="VARCHAR" property="anotherName" />
+    <result column="t_status" jdbcType="INTEGER" property="status" />
+    <result column="t_province" jdbcType="INTEGER" property="province" />
+    <result column="t_city" jdbcType="INTEGER" property="city" />
+    <result column="t_district" jdbcType="INTEGER" property="district" />
+    <result column="t_cbd" jdbcType="INTEGER" property="cbd" />
+    <result column="t_estate_type" jdbcType="INTEGER" property="estateType" />
+    <result column="t_estate_addr" jdbcType="VARCHAR" property="estateAddr" />
+    <result column="t_position_describe1" jdbcType="VARCHAR" property="positionDescribe1" />
+    <result column="t_position_describe2" jdbcType="VARCHAR" property="positionDescribe2" />
+    <result column="t_room_drawing" jdbcType="BIGINT" property="roomDrawing" />
+    <result column="t_map_drawing" jdbcType="BIGINT" property="mapDrawing" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_grading
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.ufo.fang.center.model.Grading" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Grading">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_grading (id, code, name, 
@@ -41,7 +41,7 @@
       #{positionDescribe2,jdbcType=VARCHAR}, #{roomDrawing,jdbcType=BIGINT}, #{mapDrawing,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Grading" >
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Grading">
     update t_grading
     set code = #{code,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
@@ -61,7 +61,7 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select t.id as t_id, t.code as t_code, t.name as t_name, t.another_name as t_another_name, 
     t.status as t_status, t.province as t_province, t.city as t_city, t.district as t_district, 
     t.cbd as t_cbd, t.estate_type as t_estate_type, t.estate_addr as t_estate_addr, t.position_describe1 as t_position_describe1, 
@@ -70,7 +70,7 @@
     from t_grading t
     where t.id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
     select t.id as t_id, t.code as t_code, t.name as t_name, t.another_name as t_another_name, 
     t.status as t_status, t.province as t_province, t.city as t_city, t.district as t_district, 
     t.cbd as t_cbd, t.estate_type as t_estate_type, t.estate_addr as t_estate_addr, t.position_describe1 as t_position_describe1, 
@@ -78,7 +78,7 @@
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_grading t
   </select>
-  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.code as t_code, t.name as t_name, t.another_name as t_another_name, 
     t.status as t_status, t.province as t_province, t.city as t_city, t.district as t_district, 
     t.cbd as t_cbd, t.estate_type as t_estate_type, t.estate_addr as t_estate_addr, t.position_describe1 as t_position_describe1, 
@@ -86,7 +86,7 @@
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_grading t
   </select>
-  <select id="selectByPageList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.code as t_code, t.name as t_name, t.another_name as t_another_name, 
     t.status as t_status, t.province as t_province, t.city as t_city, t.district as t_district, 
     t.cbd as t_cbd, t.estate_type as t_estate_type, t.estate_addr as t_estate_addr, t.position_describe1 as t_position_describe1, 
@@ -94,11 +94,11 @@
     t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_grading t
   </select>
-  <select id="selectByPageListSum" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
     select count(1) as totalNum  ,sum(t.room_drawing as t_room_drawing) ,sum(t.map_drawing as t_map_drawing)
     from t_grading t
   </select>
-  <insert id="batchInsert" parameterType="java.util.List" >
+  <insert id="batchInsert" parameterType="java.util.List">
     insert into t_grading (id, 
       code, name, another_name, 
       status, province, city, 
@@ -107,19 +107,19 @@
       position_describe2, room_drawing, 
       map_drawing, create_time, modify_time
       )
-    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT},
       #{item.code,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR}, #{item.anotherName,jdbcType=VARCHAR}, 
       #{item.status,jdbcType=INTEGER}, #{item.province,jdbcType=INTEGER}, #{item.city,jdbcType=INTEGER}, 
       #{item.district,jdbcType=INTEGER}, #{item.cbd,jdbcType=INTEGER}, #{item.estateType,jdbcType=INTEGER}, 
       #{item.estateAddr,jdbcType=VARCHAR}, #{item.positionDescribe1,jdbcType=VARCHAR}, 
       #{item.positionDescribe2,jdbcType=VARCHAR}, #{item.roomDrawing,jdbcType=BIGINT}, 
-      #{item.mapDrawing,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}
+      #{item.mapDrawing,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP})
       </foreach>
   </insert>
-  <delete id="batchDelete" parameterType="java.util.List" >
+  <delete id="batchDelete" parameterType="java.util.List">
     delete from t_grading
     where id in 
-    <foreach collection="list" item="id" open="(" close=")" separator=",">
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
       ${id}
     </foreach>
   </delete>

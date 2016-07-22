@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <properties>
+        <property name="LOG_HOME">/log</property>
+    </properties>
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="trace" onMatch="ACCEPT"
+                             onMismatch="DENY" />
+            <PatternLayout pattern="[%5p] [%-d{yyyy-MM-dd HH:mm:ss,SSS}] [%c.%M:%L] %m%n" />
+        </Console>
+    </appenders>
+
+    <loggers>
+        <root level="trace">
+            <appender-ref ref="Console" />
+        </root>
+    </loggers>
+</configuration>

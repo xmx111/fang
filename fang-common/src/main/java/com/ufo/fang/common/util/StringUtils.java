@@ -1,7 +1,8 @@
 package com.ufo.fang.common.util;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 public class StringUtils extends org.apache.commons.lang.StringUtils {
 
@@ -116,5 +117,72 @@ public class StringUtils extends org.apache.commons.lang.StringUtils {
 
     public static String toString(Object value) {
         return value == null?null:value.toString();
+    }
+
+    public static String md5(String... values) {
+        return md5((Collection) Arrays.asList(values));
+    }
+
+    public static String md5(Collection<String> values) {
+        MessageDigest messageDigest = getMessageDigest("MD5");
+        Iterator var3 = values.iterator();
+
+        while(var3.hasNext()) {
+            String value = (String)var3.next();
+            if(value != null) {
+                messageDigest.update(value.getBytes(SysUtils.UTF_8));
+            }
+        }
+
+        return toHexString(messageDigest.digest());
+    }
+
+    public static MessageDigest getMessageDigest(String algorithm) {
+        try {
+            return MessageDigest.getInstance(algorithm.toUpperCase());
+        } catch (NoSuchAlgorithmException var2) {
+            throw new IllegalStateException("MD5 provider not exist!");
+        }
+    }
+
+    public static String toHexString(byte[] bytes) {
+        StringBuilder buf = new StringBuilder(bytes.length * 2);
+        int i = 0;
+
+        for(int len = bytes.length; i < len; ++i) {
+            int value = bytes[i] & 255;
+            if(value < 16) {
+                buf.append('0');
+            }
+
+            buf.append(Integer.toHexString(value));
+        }
+
+        return buf.toString();
+    }
+
+    public static List<String> splitToList(String text, char splitChar) {
+        return splitToList(text, splitChar, true, Integer.valueOf(text.length() / 16));
+    }
+
+    public static List<String> splitToList(String text, char splitChar, boolean trim, Integer initialCapacity) {
+        ArrayList result = initialCapacity != null && initialCapacity.intValue() >= 10?new ArrayList(initialCapacity.intValue()):new ArrayList();
+        int start = 0;
+        int len = text.length();
+
+        for(int tmp = 0; tmp < len; ++tmp) {
+            if(splitChar == text.charAt(tmp)) {
+                String tmp1 = start == tmp?"":text.substring(start, tmp);
+                result.add(trim?tmp1.trim():tmp1);
+                start = tmp + 1;
+            }
+        }
+
+        if(start <= len) {
+            String var9 = text.substring(start);
+            result.add(trim?var9.trim():var9);
+        }
+
+        return result;
     }
 }

@@ -64,6 +64,9 @@
 		-->
 		<!--<table tableName="demo_dictionary" domainObjectName="Dictionary">-->
 		<!--</table>-->
+		<table tableName="t_agent" domainObjectName="Agent" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
 		<table tableName="t_agent_third_account" domainObjectName="AgentThirdAccount" alias="t">
 			<generatedKey column="id" sqlStatement="Mysql"/>
 		</table>
@@ -82,7 +85,19 @@
 		<table tableName="t_grading_info" domainObjectName="GradingInfo" alias="t">
 			<generatedKey column="id" sqlStatement="Mysql"/>
 		</table>
+		<table tableName="t_house" domainObjectName="House" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
 		<table tableName="t_house_count" domainObjectName="HouseCount" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_house_count" domainObjectName="HouseCount" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_house_release" domainObjectName="HouseRelease" alias="t">
+			<generatedKey column="id" sqlStatement="Mysql"/>
+		</table>
+		<table tableName="t_house_source" domainObjectName="HouseSource" alias="t">
 			<generatedKey column="id" sqlStatement="Mysql"/>
 		</table>
 	</context>

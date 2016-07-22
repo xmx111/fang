@@ -10,7 +10,6 @@
 	</plugins>
 
 	<mappers>
-		<mapper resource="sqlmap/UserMapper.xml" />
 		<mapper resource="sqlmap/AgentMapper.xml" />
 		<mapper resource="sqlmap/AgentThirdAccountMapper.xml" />
 		<mapper resource="sqlmap/ChinaAreaMapper.xml" />
@@ -18,7 +17,10 @@
 		<mapper resource="sqlmap/DictionaryMapper.xml" />
 		<mapper resource="sqlmap/GradingMapper.xml" />
 		<mapper resource="sqlmap/GradingInfoMapper.xml" />
+		<mapper resource="sqlmap/HouseMapper.xml" />
 		<mapper resource="sqlmap/HouseCountMapper.xml" />
+		<mapper resource="sqlmap/HouseReleaseMapper.xml" />
+		<mapper resource="sqlmap/HouseSourceMapper.xml" />
 	</mappers>
   	
 </configuration>

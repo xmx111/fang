@@ -171,4 +171,12 @@ public class JsonUtils {
             }
         }
     }
+
+    public static String writerWithDefaultPrettyPrinter(Object value) {
+        try {
+            return value == null?null:JSON_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(value);
+        } catch (IOException var2) {
+            throw new IllegalArgumentException(var2);
+        }
+    }
 }

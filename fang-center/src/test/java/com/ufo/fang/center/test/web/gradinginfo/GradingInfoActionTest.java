@@ -1,7 +1,7 @@
-package com.ufo.fang.center.test.web.gradingInfo;
+package com.ufo.fang.center.test.web.gradinginfo;
 
 import com.ufo.fang.center.test.junit.AbstractWebTest;
-import com.ufo.framework.util.UtilJson;
+import com.ufo.fang.common.util.JsonUtils;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 * GradingInfoAction Tester.
 *
 * @author <Authors name>
-    * @since <pre>2016-07-18</pre>
+    * @since <pre>2016-07-19</pre>
     * @version 1.0
     */
     public class GradingInfoActionTest extends AbstractWebTest {
@@ -36,7 +36,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
         String html = mvc.perform(get("/gradingInfo/index.htm").with(apiSignRequestPostProcessor))
         .andReturn().getResponse().getContentAsString();
         System.out.println(html);
-        logger.info("html:\n{}", UtilJson.writerWithDefaultPrettyPrinter(html));
+        logger.info("html:\n{}", JsonUtils.writerWithDefaultPrettyPrinter(html));
     }
 
     /**

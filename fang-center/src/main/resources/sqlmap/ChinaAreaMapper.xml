@@ -1,24 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ufo.fang.center.dao.chinaarea.mapper.ChinaAreaMapper" >
-  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.ChinaArea" >
-    <id column="t_id" property="id" jdbcType="BIGINT" />
-    <result column="t_area_id" property="areaId" jdbcType="BIGINT" />
-    <result column="t_area_type" property="areaType" jdbcType="TINYINT" />
-    <result column="t_area_code" property="areaCode" jdbcType="VARCHAR" />
-    <result column="t_area_name" property="areaName" jdbcType="VARCHAR" />
-    <result column="t_parent_id" property="parentId" jdbcType="BIGINT" />
-    <result column="t_area_abbname" property="areaAbbname" jdbcType="VARCHAR" />
-    <result column="t_remark" property="remark" jdbcType="VARCHAR" />
-    <result column="t_gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
-    <result column="t_gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufo.fang.center.dao.chinaarea.mapper.ChinaAreaMapper">
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.ChinaArea">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_area_id" jdbcType="BIGINT" property="areaId" />
+    <result column="t_area_type" jdbcType="TINYINT" property="areaType" />
+    <result column="t_area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="t_area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="t_parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="t_area_abbname" jdbcType="VARCHAR" property="areaAbbname" />
+    <result column="t_remark" jdbcType="VARCHAR" property="remark" />
+    <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_china_area
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.ufo.fang.center.model.ChinaArea" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+  <insert id="insert" parameterType="com.ufo.fang.center.model.ChinaArea">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_china_area (id, area_id, area_type, 
@@ -30,7 +30,7 @@
       #{areaAbbname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
       #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.ChinaArea" >
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.ChinaArea">
     update t_china_area
     set area_id = #{areaId,jdbcType=BIGINT},
       area_type = #{areaType,jdbcType=TINYINT},
@@ -43,51 +43,51 @@
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select t.id as t_id, t.area_id as t_area_id, t.area_type as t_area_type, t.area_code as t_area_code, 
     t.area_name as t_area_name, t.parent_id as t_parent_id, t.area_abbname as t_area_abbname, 
     t.remark as t_remark, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
     from t_china_area t
     where t.id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
     select t.id as t_id, t.area_id as t_area_id, t.area_type as t_area_type, t.area_code as t_area_code, 
     t.area_name as t_area_name, t.parent_id as t_parent_id, t.area_abbname as t_area_abbname, 
     t.remark as t_remark, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
     from t_china_area t
   </select>
-  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.area_id as t_area_id, t.area_type as t_area_type, t.area_code as t_area_code, 
     t.area_name as t_area_name, t.parent_id as t_parent_id, t.area_abbname as t_area_abbname, 
     t.remark as t_remark, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
     from t_china_area t
   </select>
-  <select id="selectByPageList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.area_id as t_area_id, t.area_type as t_area_type, t.area_code as t_area_code, 
     t.area_name as t_area_name, t.parent_id as t_parent_id, t.area_abbname as t_area_abbname, 
     t.remark as t_remark, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
     from t_china_area t
   </select>
-  <select id="selectByPageListSum" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
     select count(1) as totalNum 
     from t_china_area t
   </select>
-  <insert id="batchInsert" parameterType="java.util.List" >
+  <insert id="batchInsert" parameterType="java.util.List">
     insert into t_china_area (id, 
       area_id, area_type, area_code, 
       area_name, parent_id, area_abbname, 
       remark, gmt_create, gmt_modified
       )
-    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT},
       #{item.areaId,jdbcType=BIGINT}, #{item.areaType,jdbcType=TINYINT}, #{item.areaCode,jdbcType=VARCHAR}, 
       #{item.areaName,jdbcType=VARCHAR}, #{item.parentId,jdbcType=BIGINT}, #{item.areaAbbname,jdbcType=VARCHAR}, 
-      #{item.remark,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}
+      #{item.remark,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP})
       </foreach>
   </insert>
-  <delete id="batchDelete" parameterType="java.util.List" >
+  <delete id="batchDelete" parameterType="java.util.List">
     delete from t_china_area
     where id in 
-    <foreach collection="list" item="id" open="(" close=")" separator=",">
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
       ${id}
     </foreach>
   </delete>

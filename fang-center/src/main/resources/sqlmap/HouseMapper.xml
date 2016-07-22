@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufo.fang.center.dao.house.mapper.HouseMapper">
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.House">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_agent_id" jdbcType="BIGINT" property="agentId" />
+    <result column="t_collect_fang_uuid" jdbcType="VARCHAR" property="collectFangUuid" />
+    <result column="t_use_type" jdbcType="BIT" property="useType" />
+    <result column="t_sales_type" jdbcType="BIT" property="salesType" />
+    <result column="t_status" jdbcType="BIT" property="status" />
+    <result column="t_grading_name" jdbcType="VARCHAR" property="gradingName" />
+    <result column="t_province" jdbcType="INTEGER" property="province" />
+    <result column="t_city" jdbcType="INTEGER" property="city" />
+    <result column="t_district" jdbcType="VARCHAR" property="district" />
+    <result column="t_cbd" jdbcType="VARCHAR" property="cbd" />
+    <result column="t_address" jdbcType="VARCHAR" property="address" />
+    <result column="t_building_no" jdbcType="VARCHAR" property="buildingNo" />
+    <result column="t_unit_no" jdbcType="VARCHAR" property="unitNo" />
+    <result column="t_house_no" jdbcType="VARCHAR" property="houseNo" />
+    <result column="t_floor" jdbcType="INTEGER" property="floor" />
+    <result column="t_total_floor" jdbcType="INTEGER" property="totalFloor" />
+    <result column="t_sales_base_price" jdbcType="DECIMAL" property="salesBasePrice" />
+    <result column="t_room" jdbcType="INTEGER" property="room" />
+    <result column="t_hall" jdbcType="INTEGER" property="hall" />
+    <result column="t_kitchen" jdbcType="INTEGER" property="kitchen" />
+    <result column="t_toilet" jdbcType="INTEGER" property="toilet" />
+    <result column="t_sales_price" jdbcType="DECIMAL" property="salesPrice" />
+    <result column="t_sales_unit_price" jdbcType="DECIMAL" property="salesUnitPrice" />
+    <result column="t_balcony" jdbcType="INTEGER" property="balcony" />
+    <result column="t_position" jdbcType="VARCHAR" property="position" />
+    <result column="t_depth" jdbcType="DOUBLE" property="depth" />
+    <result column="t_floor_height" jdbcType="DOUBLE" property="floorHeight" />
+    <result column="t_gate_width" jdbcType="DOUBLE" property="gateWidth" />
+    <result column="t_floor_num" jdbcType="BIT" property="floorNum" />
+    <result column="t_level" jdbcType="BIT" property="level" />
+    <result column="t_office_rate" jdbcType="DOUBLE" property="officeRate" />
+    <result column="t_parking_length" jdbcType="DOUBLE" property="parkingLength" />
+    <result column="t_parking_width" jdbcType="DOUBLE" property="parkingWidth" />
+    <result column="t_pay_month" jdbcType="DECIMAL" property="payMonth" />
+    <result column="t_capacity" jdbcType="VARCHAR" property="capacity" />
+    <result column="t_feature" jdbcType="VARCHAR" property="feature" />
+    <result column="t_publish_price" jdbcType="INTEGER" property="publishPrice" />
+    <result column="t_lowest_price" jdbcType="INTEGER" property="lowestPrice" />
+    <result column="t_property_right_type2" jdbcType="BIT" property="propertyRightType2" />
+    <result column="t_building_year" jdbcType="INTEGER" property="buildingYear" />
+    <result column="t_building_area" jdbcType="INTEGER" property="buildingArea" />
+    <result column="t_usable_area" jdbcType="DOUBLE" property="usableArea" />
+    <result column="t_housing_type" jdbcType="BIT" property="housingType" />
+    <result column="t_decoration_type2" jdbcType="BIT" property="decorationType2" />
+    <result column="t_orientation" jdbcType="BIT" property="orientation" />
+    <result column="t_building_structure" jdbcType="BIT" property="buildingStructure" />
+    <result column="t_certificate_five" jdbcType="BIT" property="certificateFive" />
+    <result column="t_only_housing" jdbcType="BIT" property="onlyHousing" />
+    <result column="t_look_time_type" jdbcType="VARCHAR" property="lookTimeType" />
+    <result column="t_inner_code" jdbcType="VARCHAR" property="innerCode" />
+    <result column="t_tax_type" jdbcType="BIT" property="taxType" />
+    <result column="t_lease_price" jdbcType="DECIMAL" property="leasePrice" />
+    <result column="t_lease_unit_price" jdbcType="DECIMAL" property="leaseUnitPrice" />
+    <result column="t_pay_type" jdbcType="BIT" property="payType" />
+    <result column="t_detain" jdbcType="INTEGER" property="detain" />
+    <result column="t_pay" jdbcType="INTEGER" property="pay" />
+    <result column="t_delegation_type" jdbcType="BIT" property="delegationType" />
+    <result column="t_delegation_time" jdbcType="TIMESTAMP" property="delegationTime" />
+    <result column="t_manager_price" jdbcType="DECIMAL" property="managerPrice" />
+    <result column="t_ready_time" jdbcType="TIMESTAMP" property="readyTime" />
+    <result column="t_delegation_no" jdbcType="VARCHAR" property="delegationNo" />
+    <result column="t_source_type" jdbcType="BIT" property="sourceType" />
+    <result column="t_actuality_type" jdbcType="BIT" property="actualityType" />
+    <result column="t_property_right_type" jdbcType="BIT" property="propertyRightType" />
+    <result column="t_decoration_type" jdbcType="BIT" property="decorationType" />
+    <result column="t_credentials_type" jdbcType="BIT" property="credentialsType" />
+    <result column="t_base_service" jdbcType="VARCHAR" property="baseService" />
+    <result column="t_furniture" jdbcType="VARCHAR" property="furniture" />
+    <result column="t_electronics" jdbcType="VARCHAR" property="electronics" />
+    <result column="t_payment_type" jdbcType="BIT" property="paymentType" />
+    <result column="t_commission_type" jdbcType="BIT" property="commissionType" />
+    <result column="t_has_key" jdbcType="BIT" property="hasKey" />
+    <result column="t_key_no" jdbcType="VARCHAR" property="keyNo" />
+    <result column="t_owner" jdbcType="VARCHAR" property="owner" />
+    <result column="t_owner_mobile" jdbcType="VARCHAR" property="ownerMobile" />
+    <result column="t_contact" jdbcType="VARCHAR" property="contact" />
+    <result column="t_property_credentials" jdbcType="VARCHAR" property="propertyCredentials" />
+    <result column="t_nationality" jdbcType="VARCHAR" property="nationality" />
+    <result column="t_contact_explain" jdbcType="VARCHAR" property="contactExplain" />
+    <result column="t_remark" jdbcType="VARCHAR" property="remark" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from t_house
+    where id = #{id,jdbcType=BIGINT}
+      and code = #{code,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.House">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_house (id, code, agent_id, 
+      collect_fang_uuid, use_type, sales_type, 
+      status, grading_name, province, 
+      city, district, cbd, 
+      address, building_no, unit_no, 
+      house_no, floor, total_floor, 
+      sales_base_price, room, hall, 
+      kitchen, toilet, sales_price, 
+      sales_unit_price, balcony, position, 
+      depth, floor_height, gate_width, 
+      floor_num, level, office_rate, 
+      parking_length, parking_width, pay_month, 
+      capacity, feature, publish_price, 
+      lowest_price, property_right_type2, building_year, 
+      building_area, usable_area, housing_type, 
+      decoration_type2, orientation, building_structure, 
+      certificate_five, only_housing, look_time_type, 
+      inner_code, tax_type, lease_price, 
+      lease_unit_price, pay_type, detain, 
+      pay, delegation_type, delegation_time, 
+      manager_price, ready_time, delegation_no, 
+      source_type, actuality_type, property_right_type, 
+      decoration_type, credentials_type, base_service, 
+      furniture, electronics, payment_type, 
+      commission_type, has_key, key_no, 
+      owner, owner_mobile, contact, 
+      property_credentials, nationality, contact_explain, 
+      remark, create_time, modify_time
+      )
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{agentId,jdbcType=BIGINT}, 
+      #{collectFangUuid,jdbcType=VARCHAR}, #{useType,jdbcType=BIT}, #{salesType,jdbcType=BIT}, 
+      #{status,jdbcType=BIT}, #{gradingName,jdbcType=VARCHAR}, #{province,jdbcType=INTEGER}, 
+      #{city,jdbcType=INTEGER}, #{district,jdbcType=VARCHAR}, #{cbd,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{buildingNo,jdbcType=VARCHAR}, #{unitNo,jdbcType=VARCHAR}, 
+      #{houseNo,jdbcType=VARCHAR}, #{floor,jdbcType=INTEGER}, #{totalFloor,jdbcType=INTEGER}, 
+      #{salesBasePrice,jdbcType=DECIMAL}, #{room,jdbcType=INTEGER}, #{hall,jdbcType=INTEGER}, 
+      #{kitchen,jdbcType=INTEGER}, #{toilet,jdbcType=INTEGER}, #{salesPrice,jdbcType=DECIMAL}, 
+      #{salesUnitPrice,jdbcType=DECIMAL}, #{balcony,jdbcType=INTEGER}, #{position,jdbcType=VARCHAR}, 
+      #{depth,jdbcType=DOUBLE}, #{floorHeight,jdbcType=DOUBLE}, #{gateWidth,jdbcType=DOUBLE}, 
+      #{floorNum,jdbcType=BIT}, #{level,jdbcType=BIT}, #{officeRate,jdbcType=DOUBLE}, 
+      #{parkingLength,jdbcType=DOUBLE}, #{parkingWidth,jdbcType=DOUBLE}, #{payMonth,jdbcType=DECIMAL}, 
+      #{capacity,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{publishPrice,jdbcType=INTEGER}, 
+      #{lowestPrice,jdbcType=INTEGER}, #{propertyRightType2,jdbcType=BIT}, #{buildingYear,jdbcType=INTEGER}, 
+      #{buildingArea,jdbcType=INTEGER}, #{usableArea,jdbcType=DOUBLE}, #{housingType,jdbcType=BIT}, 
+      #{decorationType2,jdbcType=BIT}, #{orientation,jdbcType=BIT}, #{buildingStructure,jdbcType=BIT}, 
+      #{certificateFive,jdbcType=BIT}, #{onlyHousing,jdbcType=BIT}, #{lookTimeType,jdbcType=VARCHAR}, 
+      #{innerCode,jdbcType=VARCHAR}, #{taxType,jdbcType=BIT}, #{leasePrice,jdbcType=DECIMAL}, 
+      #{leaseUnitPrice,jdbcType=DECIMAL}, #{payType,jdbcType=BIT}, #{detain,jdbcType=INTEGER}, 
+      #{pay,jdbcType=INTEGER}, #{delegationType,jdbcType=BIT}, #{delegationTime,jdbcType=TIMESTAMP}, 
+      #{managerPrice,jdbcType=DECIMAL}, #{readyTime,jdbcType=TIMESTAMP}, #{delegationNo,jdbcType=VARCHAR}, 
+      #{sourceType,jdbcType=BIT}, #{actualityType,jdbcType=BIT}, #{propertyRightType,jdbcType=BIT}, 
+      #{decorationType,jdbcType=BIT}, #{credentialsType,jdbcType=BIT}, #{baseService,jdbcType=VARCHAR}, 
+      #{furniture,jdbcType=VARCHAR}, #{electronics,jdbcType=VARCHAR}, #{paymentType,jdbcType=BIT}, 
+      #{commissionType,jdbcType=BIT}, #{hasKey,jdbcType=BIT}, #{keyNo,jdbcType=VARCHAR}, 
+      #{owner,jdbcType=VARCHAR}, #{ownerMobile,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{propertyCredentials,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, #{contactExplain,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.House">
+    update t_house
+    set agent_id = #{agentId,jdbcType=BIGINT},
+      collect_fang_uuid = #{collectFangUuid,jdbcType=VARCHAR},
+      use_type = #{useType,jdbcType=BIT},
+      sales_type = #{salesType,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      grading_name = #{gradingName,jdbcType=VARCHAR},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
+      district = #{district,jdbcType=VARCHAR},
+      cbd = #{cbd,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      building_no = #{buildingNo,jdbcType=VARCHAR},
+      unit_no = #{unitNo,jdbcType=VARCHAR},
+      house_no = #{houseNo,jdbcType=VARCHAR},
+      floor = #{floor,jdbcType=INTEGER},
+      total_floor = #{totalFloor,jdbcType=INTEGER},
+      sales_base_price = #{salesBasePrice,jdbcType=DECIMAL},
+      room = #{room,jdbcType=INTEGER},
+      hall = #{hall,jdbcType=INTEGER},
+      kitchen = #{kitchen,jdbcType=INTEGER},
+      toilet = #{toilet,jdbcType=INTEGER},
+      sales_price = #{salesPrice,jdbcType=DECIMAL},
+      sales_unit_price = #{salesUnitPrice,jdbcType=DECIMAL},
+      balcony = #{balcony,jdbcType=INTEGER},
+      position = #{position,jdbcType=VARCHAR},
+      depth = #{depth,jdbcType=DOUBLE},
+      floor_height = #{floorHeight,jdbcType=DOUBLE},
+      gate_width = #{gateWidth,jdbcType=DOUBLE},
+      floor_num = #{floorNum,jdbcType=BIT},
+      level = #{level,jdbcType=BIT},
+      office_rate = #{officeRate,jdbcType=DOUBLE},
+      parking_length = #{parkingLength,jdbcType=DOUBLE},
+      parking_width = #{parkingWidth,jdbcType=DOUBLE},
+      pay_month = #{payMonth,jdbcType=DECIMAL},
+      capacity = #{capacity,jdbcType=VARCHAR},
+      feature = #{feature,jdbcType=VARCHAR},
+      publish_price = #{publishPrice,jdbcType=INTEGER},
+      lowest_price = #{lowestPrice,jdbcType=INTEGER},
+      property_right_type2 = #{propertyRightType2,jdbcType=BIT},
+      building_year = #{buildingYear,jdbcType=INTEGER},
+      building_area = #{buildingArea,jdbcType=INTEGER},
+      usable_area = #{usableArea,jdbcType=DOUBLE},
+      housing_type = #{housingType,jdbcType=BIT},
+      decoration_type2 = #{decorationType2,jdbcType=BIT},
+      orientation = #{orientation,jdbcType=BIT},
+      building_structure = #{buildingStructure,jdbcType=BIT},
+      certificate_five = #{certificateFive,jdbcType=BIT},
+      only_housing = #{onlyHousing,jdbcType=BIT},
+      look_time_type = #{lookTimeType,jdbcType=VARCHAR},
+      inner_code = #{innerCode,jdbcType=VARCHAR},
+      tax_type = #{taxType,jdbcType=BIT},
+      lease_price = #{leasePrice,jdbcType=DECIMAL},
+      lease_unit_price = #{leaseUnitPrice,jdbcType=DECIMAL},
+      pay_type = #{payType,jdbcType=BIT},
+      detain = #{detain,jdbcType=INTEGER},
+      pay = #{pay,jdbcType=INTEGER},
+      delegation_type = #{delegationType,jdbcType=BIT},
+      delegation_time = #{delegationTime,jdbcType=TIMESTAMP},
+      manager_price = #{managerPrice,jdbcType=DECIMAL},
+      ready_time = #{readyTime,jdbcType=TIMESTAMP},
+      delegation_no = #{delegationNo,jdbcType=VARCHAR},
+      source_type = #{sourceType,jdbcType=BIT},
+      actuality_type = #{actualityType,jdbcType=BIT},
+      property_right_type = #{propertyRightType,jdbcType=BIT},
+      decoration_type = #{decorationType,jdbcType=BIT},
+      credentials_type = #{credentialsType,jdbcType=BIT},
+      base_service = #{baseService,jdbcType=VARCHAR},
+      furniture = #{furniture,jdbcType=VARCHAR},
+      electronics = #{electronics,jdbcType=VARCHAR},
+      payment_type = #{paymentType,jdbcType=BIT},
+      commission_type = #{commissionType,jdbcType=BIT},
+      has_key = #{hasKey,jdbcType=BIT},
+      key_no = #{keyNo,jdbcType=VARCHAR},
+      owner = #{owner,jdbcType=VARCHAR},
+      owner_mobile = #{ownerMobile,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=VARCHAR},
+      property_credentials = #{propertyCredentials,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      contact_explain = #{contactExplain,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+      and code = #{code,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.agent_id as t_agent_id, t.collect_fang_uuid as t_collect_fang_uuid, 
+    t.use_type as t_use_type, t.sales_type as t_sales_type, t.status as t_status, t.grading_name as t_grading_name, 
+    t.province as t_province, t.city as t_city, t.district as t_district, t.cbd as t_cbd, 
+    t.address as t_address, t.building_no as t_building_no, t.unit_no as t_unit_no, t.house_no as t_house_no, 
+    t.floor as t_floor, t.total_floor as t_total_floor, t.sales_base_price as t_sales_base_price, 
+    t.room as t_room, t.hall as t_hall, t.kitchen as t_kitchen, t.toilet as t_toilet, 
+    t.sales_price as t_sales_price, t.sales_unit_price as t_sales_unit_price, t.balcony as t_balcony, 
+    t.position as t_position, t.depth as t_depth, t.floor_height as t_floor_height, t.gate_width as t_gate_width, 
+    t.floor_num as t_floor_num, t.level as t_level, t.office_rate as t_office_rate, t.parking_length as t_parking_length, 
+    t.parking_width as t_parking_width, t.pay_month as t_pay_month, t.capacity as t_capacity, 
+    t.feature as t_feature, t.publish_price as t_publish_price, t.lowest_price as t_lowest_price, 
+    t.property_right_type2 as t_property_right_type2, t.building_year as t_building_year, 
+    t.building_area as t_building_area, t.usable_area as t_usable_area, t.housing_type as t_housing_type, 
+    t.decoration_type2 as t_decoration_type2, t.orientation as t_orientation, t.building_structure as t_building_structure, 
+    t.certificate_five as t_certificate_five, t.only_housing as t_only_housing, t.look_time_type as t_look_time_type, 
+    t.inner_code as t_inner_code, t.tax_type as t_tax_type, t.lease_price as t_lease_price, 
+    t.lease_unit_price as t_lease_unit_price, t.pay_type as t_pay_type, t.detain as t_detain, 
+    t.pay as t_pay, t.delegation_type as t_delegation_type, t.delegation_time as t_delegation_time, 
+    t.manager_price as t_manager_price, t.ready_time as t_ready_time, t.delegation_no as t_delegation_no, 
+    t.source_type as t_source_type, t.actuality_type as t_actuality_type, t.property_right_type as t_property_right_type, 
+    t.decoration_type as t_decoration_type, t.credentials_type as t_credentials_type, 
+    t.base_service as t_base_service, t.furniture as t_furniture, t.electronics as t_electronics, 
+    t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
+    t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
+    t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_house t
+    where t.id = #{id,jdbcType=BIGINT}
+      and t.code = #{code,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.agent_id as t_agent_id, t.collect_fang_uuid as t_collect_fang_uuid, 
+    t.use_type as t_use_type, t.sales_type as t_sales_type, t.status as t_status, t.grading_name as t_grading_name, 
+    t.province as t_province, t.city as t_city, t.district as t_district, t.cbd as t_cbd, 
+    t.address as t_address, t.building_no as t_building_no, t.unit_no as t_unit_no, t.house_no as t_house_no, 
+    t.floor as t_floor, t.total_floor as t_total_floor, t.sales_base_price as t_sales_base_price, 
+    t.room as t_room, t.hall as t_hall, t.kitchen as t_kitchen, t.toilet as t_toilet, 
+    t.sales_price as t_sales_price, t.sales_unit_price as t_sales_unit_price, t.balcony as t_balcony, 
+    t.position as t_position, t.depth as t_depth, t.floor_height as t_floor_height, t.gate_width as t_gate_width, 
+    t.floor_num as t_floor_num, t.level as t_level, t.office_rate as t_office_rate, t.parking_length as t_parking_length, 
+    t.parking_width as t_parking_width, t.pay_month as t_pay_month, t.capacity as t_capacity, 
+    t.feature as t_feature, t.publish_price as t_publish_price, t.lowest_price as t_lowest_price, 
+    t.property_right_type2 as t_property_right_type2, t.building_year as t_building_year, 
+    t.building_area as t_building_area, t.usable_area as t_usable_area, t.housing_type as t_housing_type, 
+    t.decoration_type2 as t_decoration_type2, t.orientation as t_orientation, t.building_structure as t_building_structure, 
+    t.certificate_five as t_certificate_five, t.only_housing as t_only_housing, t.look_time_type as t_look_time_type, 
+    t.inner_code as t_inner_code, t.tax_type as t_tax_type, t.lease_price as t_lease_price, 
+    t.lease_unit_price as t_lease_unit_price, t.pay_type as t_pay_type, t.detain as t_detain, 
+    t.pay as t_pay, t.delegation_type as t_delegation_type, t.delegation_time as t_delegation_time, 
+    t.manager_price as t_manager_price, t.ready_time as t_ready_time, t.delegation_no as t_delegation_no, 
+    t.source_type as t_source_type, t.actuality_type as t_actuality_type, t.property_right_type as t_property_right_type, 
+    t.decoration_type as t_decoration_type, t.credentials_type as t_credentials_type, 
+    t.base_service as t_base_service, t.furniture as t_furniture, t.electronics as t_electronics, 
+    t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
+    t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
+    t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_house t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.agent_id as t_agent_id, t.collect_fang_uuid as t_collect_fang_uuid, 
+    t.use_type as t_use_type, t.sales_type as t_sales_type, t.status as t_status, t.grading_name as t_grading_name, 
+    t.province as t_province, t.city as t_city, t.district as t_district, t.cbd as t_cbd, 
+    t.address as t_address, t.building_no as t_building_no, t.unit_no as t_unit_no, t.house_no as t_house_no, 
+    t.floor as t_floor, t.total_floor as t_total_floor, t.sales_base_price as t_sales_base_price, 
+    t.room as t_room, t.hall as t_hall, t.kitchen as t_kitchen, t.toilet as t_toilet, 
+    t.sales_price as t_sales_price, t.sales_unit_price as t_sales_unit_price, t.balcony as t_balcony, 
+    t.position as t_position, t.depth as t_depth, t.floor_height as t_floor_height, t.gate_width as t_gate_width, 
+    t.floor_num as t_floor_num, t.level as t_level, t.office_rate as t_office_rate, t.parking_length as t_parking_length, 
+    t.parking_width as t_parking_width, t.pay_month as t_pay_month, t.capacity as t_capacity, 
+    t.feature as t_feature, t.publish_price as t_publish_price, t.lowest_price as t_lowest_price, 
+    t.property_right_type2 as t_property_right_type2, t.building_year as t_building_year, 
+    t.building_area as t_building_area, t.usable_area as t_usable_area, t.housing_type as t_housing_type, 
+    t.decoration_type2 as t_decoration_type2, t.orientation as t_orientation, t.building_structure as t_building_structure, 
+    t.certificate_five as t_certificate_five, t.only_housing as t_only_housing, t.look_time_type as t_look_time_type, 
+    t.inner_code as t_inner_code, t.tax_type as t_tax_type, t.lease_price as t_lease_price, 
+    t.lease_unit_price as t_lease_unit_price, t.pay_type as t_pay_type, t.detain as t_detain, 
+    t.pay as t_pay, t.delegation_type as t_delegation_type, t.delegation_time as t_delegation_time, 
+    t.manager_price as t_manager_price, t.ready_time as t_ready_time, t.delegation_no as t_delegation_no, 
+    t.source_type as t_source_type, t.actuality_type as t_actuality_type, t.property_right_type as t_property_right_type, 
+    t.decoration_type as t_decoration_type, t.credentials_type as t_credentials_type, 
+    t.base_service as t_base_service, t.furniture as t_furniture, t.electronics as t_electronics, 
+    t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
+    t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
+    t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_house t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.agent_id as t_agent_id, t.collect_fang_uuid as t_collect_fang_uuid, 
+    t.use_type as t_use_type, t.sales_type as t_sales_type, t.status as t_status, t.grading_name as t_grading_name, 
+    t.province as t_province, t.city as t_city, t.district as t_district, t.cbd as t_cbd, 
+    t.address as t_address, t.building_no as t_building_no, t.unit_no as t_unit_no, t.house_no as t_house_no, 
+    t.floor as t_floor, t.total_floor as t_total_floor, t.sales_base_price as t_sales_base_price, 
+    t.room as t_room, t.hall as t_hall, t.kitchen as t_kitchen, t.toilet as t_toilet, 
+    t.sales_price as t_sales_price, t.sales_unit_price as t_sales_unit_price, t.balcony as t_balcony, 
+    t.position as t_position, t.depth as t_depth, t.floor_height as t_floor_height, t.gate_width as t_gate_width, 
+    t.floor_num as t_floor_num, t.level as t_level, t.office_rate as t_office_rate, t.parking_length as t_parking_length, 
+    t.parking_width as t_parking_width, t.pay_month as t_pay_month, t.capacity as t_capacity, 
+    t.feature as t_feature, t.publish_price as t_publish_price, t.lowest_price as t_lowest_price, 
+    t.property_right_type2 as t_property_right_type2, t.building_year as t_building_year, 
+    t.building_area as t_building_area, t.usable_area as t_usable_area, t.housing_type as t_housing_type, 
+    t.decoration_type2 as t_decoration_type2, t.orientation as t_orientation, t.building_structure as t_building_structure, 
+    t.certificate_five as t_certificate_five, t.only_housing as t_only_housing, t.look_time_type as t_look_time_type, 
+    t.inner_code as t_inner_code, t.tax_type as t_tax_type, t.lease_price as t_lease_price, 
+    t.lease_unit_price as t_lease_unit_price, t.pay_type as t_pay_type, t.detain as t_detain, 
+    t.pay as t_pay, t.delegation_type as t_delegation_type, t.delegation_time as t_delegation_time, 
+    t.manager_price as t_manager_price, t.ready_time as t_ready_time, t.delegation_no as t_delegation_no, 
+    t.source_type as t_source_type, t.actuality_type as t_actuality_type, t.property_right_type as t_property_right_type, 
+    t.decoration_type as t_decoration_type, t.credentials_type as t_credentials_type, 
+    t.base_service as t_base_service, t.furniture as t_furniture, t.electronics as t_electronics, 
+    t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
+    t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
+    t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
+    from t_house t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_house t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_house (id, 
+      code, agent_id, collect_fang_uuid, 
+      use_type, sales_type, status, 
+      grading_name, province, city, 
+      district, cbd, address, 
+      building_no, unit_no, house_no, 
+      floor, total_floor, sales_base_price, 
+      room, hall, kitchen, 
+      toilet, sales_price, sales_unit_price, 
+      balcony, position, depth, 
+      floor_height, gate_width, floor_num, 
+      level, office_rate, parking_length, 
+      parking_width, pay_month, capacity, 
+      feature, publish_price, lowest_price, 
+      property_right_type2, building_year, 
+      building_area, usable_area, housing_type, 
+      decoration_type2, orientation, building_structure, 
+      certificate_five, only_housing, look_time_type, 
+      inner_code, tax_type, lease_price, 
+      lease_unit_price, pay_type, detain, 
+      pay, delegation_type, delegation_time, 
+      manager_price, ready_time, delegation_no, 
+      source_type, actuality_type, property_right_type, 
+      decoration_type, credentials_type, base_service, 
+      furniture, electronics, payment_type, 
+      commission_type, has_key, key_no, 
+      owner, owner_mobile, contact, 
+      property_credentials, nationality, 
+      contact_explain, remark, create_time, 
+      modify_time)
+    values <foreach close=")" collection="list" item="item" open="(" separator=",">#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.agentId,jdbcType=BIGINT}, #{item.collectFangUuid,jdbcType=VARCHAR}, 
+      #{item.useType,jdbcType=BIT}, #{item.salesType,jdbcType=BIT}, #{item.status,jdbcType=BIT}, 
+      #{item.gradingName,jdbcType=VARCHAR}, #{item.province,jdbcType=INTEGER}, #{item.city,jdbcType=INTEGER}, 
+      #{item.district,jdbcType=VARCHAR}, #{item.cbd,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, 
+      #{item.buildingNo,jdbcType=VARCHAR}, #{item.unitNo,jdbcType=VARCHAR}, #{item.houseNo,jdbcType=VARCHAR}, 
+      #{item.floor,jdbcType=INTEGER}, #{item.totalFloor,jdbcType=INTEGER}, #{item.salesBasePrice,jdbcType=DECIMAL}, 
+      #{item.room,jdbcType=INTEGER}, #{item.hall,jdbcType=INTEGER}, #{item.kitchen,jdbcType=INTEGER}, 
+      #{item.toilet,jdbcType=INTEGER}, #{item.salesPrice,jdbcType=DECIMAL}, #{item.salesUnitPrice,jdbcType=DECIMAL}, 
+      #{item.balcony,jdbcType=INTEGER}, #{item.position,jdbcType=VARCHAR}, #{item.depth,jdbcType=DOUBLE}, 
+      #{item.floorHeight,jdbcType=DOUBLE}, #{item.gateWidth,jdbcType=DOUBLE}, #{item.floorNum,jdbcType=BIT}, 
+      #{item.level,jdbcType=BIT}, #{item.officeRate,jdbcType=DOUBLE}, #{item.parkingLength,jdbcType=DOUBLE}, 
+      #{item.parkingWidth,jdbcType=DOUBLE}, #{item.payMonth,jdbcType=DECIMAL}, #{item.capacity,jdbcType=VARCHAR}, 
+      #{item.feature,jdbcType=VARCHAR}, #{item.publishPrice,jdbcType=INTEGER}, #{item.lowestPrice,jdbcType=INTEGER}, 
+      #{item.propertyRightType2,jdbcType=BIT}, #{item.buildingYear,jdbcType=INTEGER}, 
+      #{item.buildingArea,jdbcType=INTEGER}, #{item.usableArea,jdbcType=DOUBLE}, #{item.housingType,jdbcType=BIT}, 
+      #{item.decorationType2,jdbcType=BIT}, #{item.orientation,jdbcType=BIT}, #{item.buildingStructure,jdbcType=BIT}, 
+      #{item.certificateFive,jdbcType=BIT}, #{item.onlyHousing,jdbcType=BIT}, #{item.lookTimeType,jdbcType=VARCHAR}, 
+      #{item.innerCode,jdbcType=VARCHAR}, #{item.taxType,jdbcType=BIT}, #{item.leasePrice,jdbcType=DECIMAL}, 
+      #{item.leaseUnitPrice,jdbcType=DECIMAL}, #{item.payType,jdbcType=BIT}, #{item.detain,jdbcType=INTEGER}, 
+      #{item.pay,jdbcType=INTEGER}, #{item.delegationType,jdbcType=BIT}, #{item.delegationTime,jdbcType=TIMESTAMP}, 
+      #{item.managerPrice,jdbcType=DECIMAL}, #{item.readyTime,jdbcType=TIMESTAMP}, #{item.delegationNo,jdbcType=VARCHAR}, 
+      #{item.sourceType,jdbcType=BIT}, #{item.actualityType,jdbcType=BIT}, #{item.propertyRightType,jdbcType=BIT}, 
+      #{item.decorationType,jdbcType=BIT}, #{item.credentialsType,jdbcType=BIT}, #{item.baseService,jdbcType=VARCHAR}, 
+      #{item.furniture,jdbcType=VARCHAR}, #{item.electronics,jdbcType=VARCHAR}, #{item.paymentType,jdbcType=BIT}, 
+      #{item.commissionType,jdbcType=BIT}, #{item.hasKey,jdbcType=BIT}, #{item.keyNo,jdbcType=VARCHAR}, 
+      #{item.owner,jdbcType=VARCHAR}, #{item.ownerMobile,jdbcType=VARCHAR}, #{item.contact,jdbcType=VARCHAR}, 
+      #{item.propertyCredentials,jdbcType=VARCHAR}, #{item.nationality,jdbcType=VARCHAR}, 
+      #{item.contactExplain,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
+      #{item.modifyTime,jdbcType=TIMESTAMP}</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_house
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+</mapper>

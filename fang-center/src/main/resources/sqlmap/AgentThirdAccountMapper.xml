@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ufo.fang.center.dao.agentthirdaccount.mapper.AgentThirdAccountMapper" >
-  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.AgentThirdAccount" >
-    <id column="t_id" property="id" jdbcType="BIGINT" />
-    <result column="t_website_id" property="websiteId" jdbcType="BIGINT" />
-    <result column="t_agent_id" property="agentId" jdbcType="BIGINT" />
-    <result column="t_account_no" property="accountNo" jdbcType="VARCHAR" />
-    <result column="t_password" property="password" jdbcType="VARCHAR" />
-    <result column="t_create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="t_modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ufo.fang.center.dao.agentthirdaccount.mapper.AgentThirdAccountMapper">
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.AgentThirdAccount">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_website_id" jdbcType="BIGINT" property="websiteId" />
+    <result column="t_agent_id" jdbcType="BIGINT" property="agentId" />
+    <result column="t_account_no" jdbcType="VARCHAR" property="accountNo" />
+    <result column="t_password" jdbcType="VARCHAR" property="password" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_agent_third_account
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.ufo.fang.center.model.AgentThirdAccount" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+  <insert id="insert" parameterType="com.ufo.fang.center.model.AgentThirdAccount">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into t_agent_third_account (id, website_id, agent_id, 
@@ -25,7 +25,7 @@
       #{accountNo,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.AgentThirdAccount" >
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.AgentThirdAccount">
     update t_agent_third_account
     set website_id = #{websiteId,jdbcType=BIGINT},
       agent_id = #{agentId,jdbcType=BIGINT},
@@ -35,45 +35,45 @@
       modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select t.id as t_id, t.website_id as t_website_id, t.agent_id as t_agent_id, t.account_no as t_account_no, 
     t.password as t_password, t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent_third_account t
     where t.id = #{id,jdbcType=BIGINT}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap">
     select t.id as t_id, t.website_id as t_website_id, t.agent_id as t_agent_id, t.account_no as t_account_no, 
     t.password as t_password, t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent_third_account t
   </select>
-  <select id="selectByParameters" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.website_id as t_website_id, t.agent_id as t_agent_id, t.account_no as t_account_no, 
     t.password as t_password, t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent_third_account t
   </select>
-  <select id="selectByPageList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.website_id as t_website_id, t.agent_id as t_agent_id, t.account_no as t_account_no, 
     t.password as t_password, t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_agent_third_account t
   </select>
-  <select id="selectByPageListSum" resultType="java.util.HashMap" parameterType="java.util.HashMap" >
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
     select count(1) as totalNum 
     from t_agent_third_account t
   </select>
-  <insert id="batchInsert" parameterType="java.util.List" >
+  <insert id="batchInsert" parameterType="java.util.List">
     insert into t_agent_third_account (id, 
       website_id, agent_id, account_no, 
       password, create_time, modify_time
       )
-    values <foreach collection="list" item="item" open="(" close=")" separator=",">#{item.id,jdbcType=BIGINT}, 
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT},
       #{item.websiteId,jdbcType=BIGINT}, #{item.agentId,jdbcType=BIGINT}, #{item.accountNo,jdbcType=VARCHAR}, 
-      #{item.password,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}
+      #{item.password,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP})
       </foreach>
   </insert>
-  <delete id="batchDelete" parameterType="java.util.List" >
+  <delete id="batchDelete" parameterType="java.util.List">
     delete from t_agent_third_account
     where id in 
-    <foreach collection="list" item="id" open="(" close=")" separator=",">
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
       ${id}
     </foreach>
   </delete>

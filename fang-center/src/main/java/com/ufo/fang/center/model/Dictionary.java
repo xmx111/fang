@@ -32,12 +32,12 @@ public class Dictionary implements Serializable {
     /**
      * 创建时间
      */
-    private Date gmtCreate;
+    private Date createTime;
 
     /**
      * 修改时间
      */
-    private Date gmtModified;
+    private Date modifyTime;
 
     private static final long serialVersionUID = 1L;
 
@@ -81,20 +81,20 @@ public class Dictionary implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
-    public Date getGmtCreate() {
-        return gmtCreate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setGmtCreate(Date gmtCreate) {
-        this.gmtCreate = gmtCreate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getGmtModified() {
-        return gmtModified;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setGmtModified(Date gmtModified) {
-        this.gmtModified = gmtModified;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 
     @Override
@@ -108,8 +108,8 @@ public class Dictionary implements Serializable {
         sb.append(", value=").append(value);
         sb.append(", status=").append(status);
         sb.append(", description=").append(description);
-        sb.append(", gmtCreate=").append(gmtCreate);
-        sb.append(", gmtModified=").append(gmtModified);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", modifyTime=").append(modifyTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

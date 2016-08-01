@@ -22,10 +22,10 @@
 		<plugin type="com.ufo.generator.mybatis.plugins.CURDPluginAdapter">
 			<!-- 生成哪几类文件(fm,js,action,service,dao)，如不设置默认不生成，可选择部分，比如只生成service和dao：value="service,dao" -->
 			<property name="genFilesType" value="page,js,action,service,dao" />
-			<!-- 生成的文件模式：extend继承（默认），duplicate复本 -->
-			<property name="genFilesModal" value="extend" />
+			<!-- 生成的文件模式：extend继承（默认），duplicate复本，zui框架 -->
+			<property name="genFilesModal" value="zui" />
 			<!-- 为了避免生成覆盖已改动的代码，如不设置，默认target/generated-code，可以设置为src -->
-			<property name="genTargetSrcPath" value="src" />
+			<!--<property name="genTargetSrcPath" value="src" />-->
 		</plugin>
 		<!-- 自定义生成注释 -->
 		<commentGenerator type="com.ufo.generator.mybatis.generator.HTCommentGenerator" />

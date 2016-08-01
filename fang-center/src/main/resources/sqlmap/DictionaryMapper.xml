@@ -7,6 +7,538 @@
     <result column="t_value" jdbcType="VARCHAR" property="value" />
     <result column="t_status" jdbcType="TINYINT" property="status" />
     <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, create_time, 
+      modify_time)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, create_time, modify_time
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, create_time, 
+      modify_time)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.create_time as t_create_time, t.modify_time as t_modify_time
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, create_time, modify_time
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, gmt_create, 
+      gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, gmt_create, gmt_modified
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, gmt_create, 
+      gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, gmt_create, gmt_modified
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, gmt_create, 
+      gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, gmt_create, gmt_modified
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, gmt_create, 
+      gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, gmt_create, gmt_modified
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
+    <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ufo.fang.center.model.Dictionary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_dictionary (id, code, value, 
+      status, description, gmt_create, 
+      gmt_modified)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.Dictionary">
+    update t_dictionary
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+    where t.id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
+    select t.id as t_id, t.code as t_code, t.value as t_value, t.status as t_status, 
+    t.description as t_description, t.gmt_create as t_gmt_create, t.gmt_modified as t_gmt_modified
+    from t_dictionary t
+  </select>
+  <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    select count(1) as totalNum 
+    from t_dictionary t
+  </select>
+  <insert id="batchInsert" parameterType="java.util.List">
+    insert into t_dictionary (id, 
+      code, value, status, 
+      description, gmt_create, gmt_modified
+      )
+    values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
+      #{item.code,jdbcType=VARCHAR}, #{item.value,jdbcType=VARCHAR}, #{item.status,jdbcType=TINYINT}, 
+      #{item.description,jdbcType=VARCHAR}, #{item.gmtCreate,jdbcType=TIMESTAMP}, #{item.gmtModified,jdbcType=TIMESTAMP}
+      )</foreach>
+  </insert>
+  <delete id="batchDelete" parameterType="java.util.List">
+    delete from t_dictionary
+    where id in 
+    <foreach close=")" collection="list" item="id" open="(" separator=",">
+      ${id}
+    </foreach>
+  </delete>
+  <resultMap id="BaseResultMap" type="com.ufo.fang.center.model.Dictionary">
+    <id column="t_id" jdbcType="BIGINT" property="id" />
+    <result column="t_code" jdbcType="VARCHAR" property="code" />
+    <result column="t_value" jdbcType="VARCHAR" property="value" />
+    <result column="t_status" jdbcType="TINYINT" property="status" />
+    <result column="t_description" jdbcType="VARCHAR" property="description" />
     <result column="t_gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="t_gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>

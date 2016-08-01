@@ -17,7 +17,7 @@ public class Agent implements Serializable {
     /**
      * 手机
      */
-    private String moblie;
+    private String mobile;
 
     /**
      * 密码
@@ -52,12 +52,12 @@ public class Agent implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getMoblie() {
-        return moblie;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setMoblie(String moblie) {
-        this.moblie = moblie == null ? null : moblie.trim();
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 
     public String getPassword() {
@@ -92,7 +92,7 @@ public class Agent implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", moblie=").append(moblie);
+        sb.append(", mobile=").append(mobile);
         sb.append(", password=").append(password);
         sb.append(", createTime=").append(createTime);
         sb.append(", modifyTime=").append(modifyTime);

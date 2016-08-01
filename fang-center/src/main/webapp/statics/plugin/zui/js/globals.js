@@ -144,12 +144,14 @@ var Global = function(){
                         url: _options['url'] + (options['url'].indexOf('?')>0 ? '&' : '?') + form.serialize()
                     }).trigger("reloadGrid");
                 });
+                // 重置
                 table.closest('.grid-main').find('.btn-repeat').click(function(){
                     $(this).closest('form').reset();
                     table.jqGrid({
                         url: _options['url']
                     }).trigger("reloadGrid");
                 });
+                // 导出
                 table.closest('.grid-main').find('.btn-export').click(function(){
                     
                 });
@@ -214,9 +216,9 @@ var Global = function(){
                     minHeight: 200
                 });
             };
-            $.fn.queryJqGrid = function (options) {
-                // 查询
-            };
+            // $.fn.queryJqGrid = function (options) {
+            //     // 查询
+            // };
             $(window) .resize(function () {
                 if ($.fn.jqGrid) {
                     $('table.ui-jqgrid-btable:visible') .each(function () {

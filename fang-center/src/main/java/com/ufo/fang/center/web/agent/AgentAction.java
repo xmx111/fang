@@ -7,6 +7,7 @@ import com.ufo.fang.common.web.BaseTemplateAction;
 import com.ufo.fang.common.exceptions.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,10 +18,10 @@ import java.util.Map;
  * Agent控制器
  *
  * @author generator
- * @created 2016-07-19
+ * @created 2016-08-01
  */
 @Controller
-@RequestMapping("/agent/agent")
+@RequestMapping("/agent")
 public class AgentAction extends BaseTemplateAction<Agent, Long> {
 
     @Autowired
@@ -33,26 +34,30 @@ public class AgentAction extends BaseTemplateAction<Agent, Long> {
 
     @RequestMapping("index.htm")
     public String index() throws ServiceException {
-        return this.toView("agent/agentIndex");
+        return this.toView("agent/agent-index");
     }
 
-    @RequestMapping("queryForPage.json")
+    @RequestMapping("operator.htm")
+    public String operator(Long id, ModelMap map) throws ServiceException {
+        if (id != null)
+            map.put("data", getService().queryById(id));
+        return this.toView("agent/agent-operator");
+    }
+
+    @RequestMapping("query.json")
     @ResponseBody
-    public Object queryForPage(Integer page, Integer rows) throws ServiceException {
+    public Object query(Integer page, Integer rows) throws ServiceException {
         Map<String, Object> params = new HashMap<>();
         return gridPageResult(getService().queryForPage(params, page, rows));
     }
 
-    @RequestMapping("add.do")
+    @RequestMapping("save.do")
     @ResponseBody
-    public Object add(Agent dto) throws ServiceException {
-        return add(dto);
-    }
-
-    @RequestMapping("modify.do")
-    @ResponseBody
-    public Object modify(Agent dto) throws ServiceException {
-        return modify(dto);
+    public Object save(Agent dto) throws ServiceException {
+        if (dto.getId() == null)
+            return add(dto);
+        else
+            return modify(dto);
     }
 
     @RequestMapping("delete.do")

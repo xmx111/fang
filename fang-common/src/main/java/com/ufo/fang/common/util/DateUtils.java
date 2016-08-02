@@ -924,4 +924,20 @@ public class DateUtils {
         return endCalendar.getTime();
     }
 
+    public static String getDateBeforeCurrent(Date date){
+        if (date == null)
+            return "";
+        Date now = new Date();
+        long minutes, hours, days;
+        minutes = now.getTime() - date.getTime() / (1000 * 60);
+        if (minutes >= 60){
+            hours = now.getTime() - date.getTime() / (1000 * 60 * 60);
+            if (hours >= 24){
+                days = now.getTime() - date.getTime() / (1000 * 60 * 60 * 24);
+                return days + "天前";
+            }
+            return hours + "小时前";
+        }
+        return minutes + "分钟前";
+    }
 }

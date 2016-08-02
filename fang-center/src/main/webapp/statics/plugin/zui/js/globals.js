@@ -62,7 +62,8 @@ var Global = function(){
                 viewrecords: true,
                 sortorder: 'desc',
                 // caption: 'Preserving Selection on Client-side sorting',
-                height: '100%'
+                height: '100%',
+                multiselect : true
             };
             $.fn.ajaxGetUrl = function(url, data, callback) {
                 var div = $(this);
@@ -155,9 +156,15 @@ var Global = function(){
                 table.closest('.grid-main').find('.btn-export').click(function(){
                     
                 });
-                // 加增删改
                 var pagerId = _options['pager'];
                 table.navGrid(pagerId, {edit:false,add:false,del:false,search:false});
+                // 自定义按钮
+                if (!!_options['btnOptions']) {
+                    for (var i = _options['btnOptions'].length - 1; i >= 0; i--) {
+                        table.navButtonAdd(pagerId, _options['btnOptions'][i]);
+                    }
+                }
+                // 加增删改
                 if (!!options['deleteUrl']) {
                     table.navButtonAdd(pagerId, {
                         caption: "",
@@ -173,7 +180,7 @@ var Global = function(){
                                 size: 'sm'
                             });
                             $('#btn-nm-delete').click(function(){
-                                Global.post(options['deleteUrl'], {id:table.jqGrid('getRowData', table.jqGrid('getGridParam', 'selrow')).id}, function(){
+                                Global.post(options['deleteUrl'], {id:table.jqGrid('getGridParam', 'selarrrow')}, function(){
                                     table.trigger("reloadGrid");
                                 });
                             });
@@ -191,7 +198,7 @@ var Global = function(){
                             $.zui.modalTrigger.show({
                                 title: '修改',
                                 size: 'lg',
-                                remote: options['editUrl'] + (options['deleteUrl'].indexOf('?')>0 ? '&' : '?')  + 'id=' + table.jqGrid('getRowData', table.jqGrid('getGridParam', 'selrow')).id
+                                remote: options['editUrl'] + (options['deleteUrl'].indexOf('?')>0 ? '&' : '?')  + 'id=' + table.jqGrid('getGridParam', 'selrow')
                             });
                         },
                         position: "first"

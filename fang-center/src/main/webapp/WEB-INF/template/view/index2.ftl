@@ -44,7 +44,7 @@
                         <li class="nav-parent">
                             <a href="javascript:;"><i class="icon-download-alt"></i> 房源采集<i class="icon-chevron-right nav-parent-fold-icon"></i></a>
                             <ul class="nav">
-                                <li><a href="javascript:;" data-url="${webroot}/test.htm" class="sub-menu"><i class="icon icon-cog"></i> 个人房源信息 </a></li>
+                                <li><a href="javascript:;" data-url="${webroot}/collect/housesource/index.htm" class="sub-menu"><i class="icon icon-cog"></i> 个人房源信息 </a></li>
                                 <li><a href="javascript:;" data-url="${webroot}/collect/houseSource/index.htm" class="sub-menu"><i class="icon icon-cog"></i> 我收藏的房源 </a></li>
                                 <li><a href="javascript:;" data-url="" class="sub-menu"><i class="icon icon-cog"></i> 采集网站申请 </a></li>
                             </ul>

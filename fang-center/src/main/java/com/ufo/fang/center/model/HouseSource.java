@@ -1,5 +1,7 @@
 package com.ufo.fang.center.model;
 
+import com.ufo.fang.common.util.DateUtils;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -159,6 +161,16 @@ public class HouseSource implements Serializable {
      * 房源描述
      */
     private String describes;
+
+    /**
+     * 联系人
+     */
+    private String contact;
+
+    /**
+     * 联系电话
+     */
+    private String contactMobile;
 
     /**
      * 创建时间
@@ -420,6 +432,22 @@ public class HouseSource implements Serializable {
         this.describes = describes == null ? null : describes.trim();
     }
 
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact == null ? null : contact.trim();
+    }
+
+    public String getContactMobile() {
+        return contactMobile;
+    }
+
+    public void setContactMobile(String contactMobile) {
+        this.contactMobile = contactMobile == null ? null : contactMobile.trim();
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -434,6 +462,10 @@ public class HouseSource implements Serializable {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
+    }
+
+    public String getTime(){
+        return DateUtils.getDateBeforeCurrent(createTime);
     }
 
     @Override
@@ -473,6 +505,8 @@ public class HouseSource implements Serializable {
         sb.append(", buildingStructure=").append(buildingStructure);
         sb.append(", orientation=").append(orientation);
         sb.append(", describes=").append(describes);
+        sb.append(", contact=").append(contact);
+        sb.append(", contactMobile=").append(contactMobile);
         sb.append(", createTime=").append(createTime);
         sb.append(", modifyTime=").append(modifyTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

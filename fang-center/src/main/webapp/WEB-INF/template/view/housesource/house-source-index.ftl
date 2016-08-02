@@ -3,7 +3,7 @@
         <div class="row search-form-default">
             <div class="col-md-12">
                 <div class="row">
-                    <form id="grading-info-form" action="#">
+                    <form id="house-source-form" action="#">
                         <div class="col-md-9">
                             <div class="input-group">
                                 <input type="text" name="code" class="form-control" placeholder="代码">
@@ -25,9 +25,9 @@
         </div>
         <div class="row grid-default">
             <div class="col-md-12">
-                <table id="grading-info-grid"></table>
+                <table id="house-source-grid"></table>
             </div>
         </div>
     </div>
 </div>
-<script src="/statics/js/gradinginfo/grading-info-index.js" type="text/javascript"></script>
+<script src="/statics/js/housesource/house-source-index.js" type="text/javascript"></script>

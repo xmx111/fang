@@ -6,9 +6,9 @@
     <result column="t_code" jdbcType="VARCHAR" property="code" />
     <result column="t_agent_id" jdbcType="BIGINT" property="agentId" />
     <result column="t_collect_fang_uuid" jdbcType="VARCHAR" property="collectFangUuid" />
-    <result column="t_use_type" jdbcType="BIT" property="useType" />
-    <result column="t_sales_type" jdbcType="BIT" property="salesType" />
-    <result column="t_status" jdbcType="BIT" property="status" />
+    <result column="t_use_type" jdbcType="INTEGER" property="useType" />
+    <result column="t_sales_type" jdbcType="INTEGER" property="salesType" />
+    <result column="t_status" jdbcType="INTEGER" property="status" />
     <result column="t_grading_name" jdbcType="VARCHAR" property="gradingName" />
     <result column="t_province" jdbcType="INTEGER" property="province" />
     <result column="t_city" jdbcType="INTEGER" property="city" />
@@ -32,8 +32,8 @@
     <result column="t_depth" jdbcType="DOUBLE" property="depth" />
     <result column="t_floor_height" jdbcType="DOUBLE" property="floorHeight" />
     <result column="t_gate_width" jdbcType="DOUBLE" property="gateWidth" />
-    <result column="t_floor_num" jdbcType="BIT" property="floorNum" />
-    <result column="t_level" jdbcType="BIT" property="level" />
+    <result column="t_floor_num" jdbcType="INTEGER" property="floorNum" />
+    <result column="t_level" jdbcType="INTEGER" property="level" />
     <result column="t_office_rate" jdbcType="DOUBLE" property="officeRate" />
     <result column="t_parking_length" jdbcType="DOUBLE" property="parkingLength" />
     <result column="t_parking_width" jdbcType="DOUBLE" property="parkingWidth" />
@@ -42,40 +42,40 @@
     <result column="t_feature" jdbcType="VARCHAR" property="feature" />
     <result column="t_publish_price" jdbcType="INTEGER" property="publishPrice" />
     <result column="t_lowest_price" jdbcType="INTEGER" property="lowestPrice" />
-    <result column="t_property_right_type2" jdbcType="BIT" property="propertyRightType2" />
+    <result column="t_property_right_type2" jdbcType="INTEGER" property="propertyRightType2" />
     <result column="t_building_year" jdbcType="INTEGER" property="buildingYear" />
     <result column="t_building_area" jdbcType="INTEGER" property="buildingArea" />
     <result column="t_usable_area" jdbcType="DOUBLE" property="usableArea" />
-    <result column="t_housing_type" jdbcType="BIT" property="housingType" />
-    <result column="t_decoration_type2" jdbcType="BIT" property="decorationType2" />
-    <result column="t_orientation" jdbcType="BIT" property="orientation" />
-    <result column="t_building_structure" jdbcType="BIT" property="buildingStructure" />
-    <result column="t_certificate_five" jdbcType="BIT" property="certificateFive" />
-    <result column="t_only_housing" jdbcType="BIT" property="onlyHousing" />
+    <result column="t_housing_type" jdbcType="INTEGER" property="housingType" />
+    <result column="t_decoration_type2" jdbcType="INTEGER" property="decorationType2" />
+    <result column="t_orientation" jdbcType="INTEGER" property="orientation" />
+    <result column="t_building_structure" jdbcType="INTEGER" property="buildingStructure" />
+    <result column="t_certificate_five" jdbcType="INTEGER" property="certificateFive" />
+    <result column="t_only_housing" jdbcType="INTEGER" property="onlyHousing" />
     <result column="t_look_time_type" jdbcType="VARCHAR" property="lookTimeType" />
     <result column="t_inner_code" jdbcType="VARCHAR" property="innerCode" />
-    <result column="t_tax_type" jdbcType="BIT" property="taxType" />
+    <result column="t_tax_type" jdbcType="INTEGER" property="taxType" />
     <result column="t_lease_price" jdbcType="DECIMAL" property="leasePrice" />
     <result column="t_lease_unit_price" jdbcType="DECIMAL" property="leaseUnitPrice" />
-    <result column="t_pay_type" jdbcType="BIT" property="payType" />
+    <result column="t_pay_type" jdbcType="INTEGER" property="payType" />
     <result column="t_detain" jdbcType="INTEGER" property="detain" />
     <result column="t_pay" jdbcType="INTEGER" property="pay" />
-    <result column="t_delegation_type" jdbcType="BIT" property="delegationType" />
+    <result column="t_delegation_type" jdbcType="INTEGER" property="delegationType" />
     <result column="t_delegation_time" jdbcType="TIMESTAMP" property="delegationTime" />
     <result column="t_manager_price" jdbcType="DECIMAL" property="managerPrice" />
     <result column="t_ready_time" jdbcType="TIMESTAMP" property="readyTime" />
     <result column="t_delegation_no" jdbcType="VARCHAR" property="delegationNo" />
-    <result column="t_source_type" jdbcType="BIT" property="sourceType" />
-    <result column="t_actuality_type" jdbcType="BIT" property="actualityType" />
-    <result column="t_property_right_type" jdbcType="BIT" property="propertyRightType" />
-    <result column="t_decoration_type" jdbcType="BIT" property="decorationType" />
-    <result column="t_credentials_type" jdbcType="BIT" property="credentialsType" />
+    <result column="t_source_type" jdbcType="INTEGER" property="sourceType" />
+    <result column="t_actuality_type" jdbcType="INTEGER" property="actualityType" />
+    <result column="t_property_right_type" jdbcType="INTEGER" property="propertyRightType" />
+    <result column="t_decoration_type" jdbcType="INTEGER" property="decorationType" />
+    <result column="t_credentials_type" jdbcType="INTEGER" property="credentialsType" />
     <result column="t_base_service" jdbcType="VARCHAR" property="baseService" />
     <result column="t_furniture" jdbcType="VARCHAR" property="furniture" />
     <result column="t_electronics" jdbcType="VARCHAR" property="electronics" />
-    <result column="t_payment_type" jdbcType="BIT" property="paymentType" />
-    <result column="t_commission_type" jdbcType="BIT" property="commissionType" />
-    <result column="t_has_key" jdbcType="BIT" property="hasKey" />
+    <result column="t_payment_type" jdbcType="INTEGER" property="paymentType" />
+    <result column="t_commission_type" jdbcType="INTEGER" property="commissionType" />
+    <result column="t_has_key" jdbcType="INTEGER" property="hasKey" />
     <result column="t_key_no" jdbcType="VARCHAR" property="keyNo" />
     <result column="t_owner" jdbcType="VARCHAR" property="owner" />
     <result column="t_owner_mobile" jdbcType="VARCHAR" property="ownerMobile" />
@@ -84,12 +84,12 @@
     <result column="t_nationality" jdbcType="VARCHAR" property="nationality" />
     <result column="t_contact_explain" jdbcType="VARCHAR" property="contactExplain" />
     <result column="t_remark" jdbcType="VARCHAR" property="remark" />
+    <result column="t_describes" jdbcType="VARCHAR" property="describes" />
     <result column="t_tag1" jdbcType="VARCHAR" property="tag1" />
     <result column="t_tag2" jdbcType="VARCHAR" property="tag2" />
     <result column="t_tag3" jdbcType="VARCHAR" property="tag3" />
     <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="t_modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
-    <result column="t_describes" jdbcType="LONGVARCHAR" property="describes" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_house_release
@@ -126,12 +126,12 @@
       commission_type, has_key, key_no, 
       owner, owner_mobile, contact, 
       property_credentials, nationality, contact_explain, 
-      remark, tag1, tag2, 
-      tag3, create_time, modify_time, 
-      describes)
+      remark, describes, tag1, 
+      tag2, tag3, create_time, 
+      modify_time)
     values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{agentId,jdbcType=BIGINT}, 
-      #{collectFangUuid,jdbcType=VARCHAR}, #{useType,jdbcType=BIT}, #{salesType,jdbcType=BIT}, 
-      #{status,jdbcType=BIT}, #{gradingName,jdbcType=VARCHAR}, #{province,jdbcType=INTEGER}, 
+      #{collectFangUuid,jdbcType=VARCHAR}, #{useType,jdbcType=INTEGER}, #{salesType,jdbcType=INTEGER},
+      #{status,jdbcType=INTEGER}, #{gradingName,jdbcType=VARCHAR}, #{province,jdbcType=INTEGER},
       #{city,jdbcType=INTEGER}, #{district,jdbcType=VARCHAR}, #{cbd,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{buildingNo,jdbcType=VARCHAR}, #{unitNo,jdbcType=VARCHAR}, 
       #{houseNo,jdbcType=VARCHAR}, #{floor,jdbcType=INTEGER}, #{totalFloor,jdbcType=INTEGER}, 
@@ -139,35 +139,35 @@
       #{kitchen,jdbcType=INTEGER}, #{toilet,jdbcType=INTEGER}, #{salesPrice,jdbcType=DECIMAL}, 
       #{salesUnitPrice,jdbcType=DECIMAL}, #{balcony,jdbcType=INTEGER}, #{position,jdbcType=VARCHAR}, 
       #{depth,jdbcType=DOUBLE}, #{floorHeight,jdbcType=DOUBLE}, #{gateWidth,jdbcType=DOUBLE}, 
-      #{floorNum,jdbcType=BIT}, #{level,jdbcType=BIT}, #{officeRate,jdbcType=DOUBLE}, 
+      #{floorNum,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{officeRate,jdbcType=DOUBLE},
       #{parkingLength,jdbcType=DOUBLE}, #{parkingWidth,jdbcType=DOUBLE}, #{payMonth,jdbcType=DECIMAL}, 
       #{capacity,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, #{publishPrice,jdbcType=INTEGER}, 
-      #{lowestPrice,jdbcType=INTEGER}, #{propertyRightType2,jdbcType=BIT}, #{buildingYear,jdbcType=INTEGER}, 
-      #{buildingArea,jdbcType=INTEGER}, #{usableArea,jdbcType=DOUBLE}, #{housingType,jdbcType=BIT}, 
-      #{decorationType2,jdbcType=BIT}, #{orientation,jdbcType=BIT}, #{buildingStructure,jdbcType=BIT}, 
-      #{certificateFive,jdbcType=BIT}, #{onlyHousing,jdbcType=BIT}, #{lookTimeType,jdbcType=VARCHAR}, 
-      #{innerCode,jdbcType=VARCHAR}, #{taxType,jdbcType=BIT}, #{leasePrice,jdbcType=DECIMAL}, 
-      #{leaseUnitPrice,jdbcType=DECIMAL}, #{payType,jdbcType=BIT}, #{detain,jdbcType=INTEGER}, 
-      #{pay,jdbcType=INTEGER}, #{delegationType,jdbcType=BIT}, #{delegationTime,jdbcType=TIMESTAMP}, 
+      #{lowestPrice,jdbcType=INTEGER}, #{propertyRightType2,jdbcType=INTEGER}, #{buildingYear,jdbcType=INTEGER},
+      #{buildingArea,jdbcType=INTEGER}, #{usableArea,jdbcType=DOUBLE}, #{housingType,jdbcType=INTEGER},
+      #{decorationType2,jdbcType=INTEGER}, #{orientation,jdbcType=INTEGER}, #{buildingStructure,jdbcType=INTEGER},
+      #{certificateFive,jdbcType=INTEGER}, #{onlyHousing,jdbcType=INTEGER}, #{lookTimeType,jdbcType=VARCHAR},
+      #{innerCode,jdbcType=VARCHAR}, #{taxType,jdbcType=INTEGER}, #{leasePrice,jdbcType=DECIMAL},
+      #{leaseUnitPrice,jdbcType=DECIMAL}, #{payType,jdbcType=INTEGER}, #{detain,jdbcType=INTEGER},
+      #{pay,jdbcType=INTEGER}, #{delegationType,jdbcType=INTEGER}, #{delegationTime,jdbcType=TIMESTAMP},
       #{managerPrice,jdbcType=DECIMAL}, #{readyTime,jdbcType=TIMESTAMP}, #{delegationNo,jdbcType=VARCHAR}, 
-      #{sourceType,jdbcType=BIT}, #{actualityType,jdbcType=BIT}, #{propertyRightType,jdbcType=BIT}, 
-      #{decorationType,jdbcType=BIT}, #{credentialsType,jdbcType=BIT}, #{baseService,jdbcType=VARCHAR}, 
-      #{furniture,jdbcType=VARCHAR}, #{electronics,jdbcType=VARCHAR}, #{paymentType,jdbcType=BIT}, 
-      #{commissionType,jdbcType=BIT}, #{hasKey,jdbcType=BIT}, #{keyNo,jdbcType=VARCHAR}, 
+      #{sourceType,jdbcType=INTEGER}, #{actualityType,jdbcType=INTEGER}, #{propertyRightType,jdbcType=INTEGER},
+      #{decorationType,jdbcType=INTEGER}, #{credentialsType,jdbcType=INTEGER}, #{baseService,jdbcType=VARCHAR},
+      #{furniture,jdbcType=VARCHAR}, #{electronics,jdbcType=VARCHAR}, #{paymentType,jdbcType=INTEGER},
+      #{commissionType,jdbcType=INTEGER}, #{hasKey,jdbcType=INTEGER}, #{keyNo,jdbcType=VARCHAR},
       #{owner,jdbcType=VARCHAR}, #{ownerMobile,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
       #{propertyCredentials,jdbcType=VARCHAR}, #{nationality,jdbcType=VARCHAR}, #{contactExplain,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{tag1,jdbcType=VARCHAR}, #{tag2,jdbcType=VARCHAR}, 
-      #{tag3,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{describes,jdbcType=LONGVARCHAR})
+      #{remark,jdbcType=VARCHAR}, #{describes,jdbcType=VARCHAR}, #{tag1,jdbcType=VARCHAR}, 
+      #{tag2,jdbcType=VARCHAR}, #{tag3,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ufo.fang.center.model.HouseRelease">
     update t_house_release
     set code = #{code,jdbcType=VARCHAR},
       agent_id = #{agentId,jdbcType=BIGINT},
       collect_fang_uuid = #{collectFangUuid,jdbcType=VARCHAR},
-      use_type = #{useType,jdbcType=BIT},
-      sales_type = #{salesType,jdbcType=BIT},
-      status = #{status,jdbcType=BIT},
+      use_type = #{useType,jdbcType=INTEGER},
+      sales_type = #{salesType,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
       grading_name = #{gradingName,jdbcType=VARCHAR},
       province = #{province,jdbcType=INTEGER},
       city = #{city,jdbcType=INTEGER},
@@ -191,8 +191,8 @@
       depth = #{depth,jdbcType=DOUBLE},
       floor_height = #{floorHeight,jdbcType=DOUBLE},
       gate_width = #{gateWidth,jdbcType=DOUBLE},
-      floor_num = #{floorNum,jdbcType=BIT},
-      level = #{level,jdbcType=BIT},
+      floor_num = #{floorNum,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
       office_rate = #{officeRate,jdbcType=DOUBLE},
       parking_length = #{parkingLength,jdbcType=DOUBLE},
       parking_width = #{parkingWidth,jdbcType=DOUBLE},
@@ -201,40 +201,40 @@
       feature = #{feature,jdbcType=VARCHAR},
       publish_price = #{publishPrice,jdbcType=INTEGER},
       lowest_price = #{lowestPrice,jdbcType=INTEGER},
-      property_right_type2 = #{propertyRightType2,jdbcType=BIT},
+      property_right_type2 = #{propertyRightType2,jdbcType=INTEGER},
       building_year = #{buildingYear,jdbcType=INTEGER},
       building_area = #{buildingArea,jdbcType=INTEGER},
       usable_area = #{usableArea,jdbcType=DOUBLE},
-      housing_type = #{housingType,jdbcType=BIT},
-      decoration_type2 = #{decorationType2,jdbcType=BIT},
-      orientation = #{orientation,jdbcType=BIT},
-      building_structure = #{buildingStructure,jdbcType=BIT},
-      certificate_five = #{certificateFive,jdbcType=BIT},
-      only_housing = #{onlyHousing,jdbcType=BIT},
+      housing_type = #{housingType,jdbcType=INTEGER},
+      decoration_type2 = #{decorationType2,jdbcType=INTEGER},
+      orientation = #{orientation,jdbcType=INTEGER},
+      building_structure = #{buildingStructure,jdbcType=INTEGER},
+      certificate_five = #{certificateFive,jdbcType=INTEGER},
+      only_housing = #{onlyHousing,jdbcType=INTEGER},
       look_time_type = #{lookTimeType,jdbcType=VARCHAR},
       inner_code = #{innerCode,jdbcType=VARCHAR},
-      tax_type = #{taxType,jdbcType=BIT},
+      tax_type = #{taxType,jdbcType=INTEGER},
       lease_price = #{leasePrice,jdbcType=DECIMAL},
       lease_unit_price = #{leaseUnitPrice,jdbcType=DECIMAL},
-      pay_type = #{payType,jdbcType=BIT},
+      pay_type = #{payType,jdbcType=INTEGER},
       detain = #{detain,jdbcType=INTEGER},
       pay = #{pay,jdbcType=INTEGER},
-      delegation_type = #{delegationType,jdbcType=BIT},
+      delegation_type = #{delegationType,jdbcType=INTEGER},
       delegation_time = #{delegationTime,jdbcType=TIMESTAMP},
       manager_price = #{managerPrice,jdbcType=DECIMAL},
       ready_time = #{readyTime,jdbcType=TIMESTAMP},
       delegation_no = #{delegationNo,jdbcType=VARCHAR},
-      source_type = #{sourceType,jdbcType=BIT},
-      actuality_type = #{actualityType,jdbcType=BIT},
-      property_right_type = #{propertyRightType,jdbcType=BIT},
-      decoration_type = #{decorationType,jdbcType=BIT},
-      credentials_type = #{credentialsType,jdbcType=BIT},
+      source_type = #{sourceType,jdbcType=INTEGER},
+      actuality_type = #{actualityType,jdbcType=INTEGER},
+      property_right_type = #{propertyRightType,jdbcType=INTEGER},
+      decoration_type = #{decorationType,jdbcType=INTEGER},
+      credentials_type = #{credentialsType,jdbcType=INTEGER},
       base_service = #{baseService,jdbcType=VARCHAR},
       furniture = #{furniture,jdbcType=VARCHAR},
       electronics = #{electronics,jdbcType=VARCHAR},
-      payment_type = #{paymentType,jdbcType=BIT},
-      commission_type = #{commissionType,jdbcType=BIT},
-      has_key = #{hasKey,jdbcType=BIT},
+      payment_type = #{paymentType,jdbcType=INTEGER},
+      commission_type = #{commissionType,jdbcType=INTEGER},
+      has_key = #{hasKey,jdbcType=INTEGER},
       key_no = #{keyNo,jdbcType=VARCHAR},
       owner = #{owner,jdbcType=VARCHAR},
       owner_mobile = #{ownerMobile,jdbcType=VARCHAR},
@@ -243,12 +243,12 @@
       nationality = #{nationality,jdbcType=VARCHAR},
       contact_explain = #{contactExplain,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
+      describes = #{describes,jdbcType=VARCHAR},
       tag1 = #{tag1,jdbcType=VARCHAR},
       tag2 = #{tag2,jdbcType=VARCHAR},
       tag3 = #{tag3,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      describes = #{describes,jdbcType=LONGVARCHAR}
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -277,9 +277,9 @@
     t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
     t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
     t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
-    t.contact_explain as t_contact_explain, t.remark as t_remark, t.tag1 as t_tag1, t.tag2 as t_tag2, 
-    t.tag3 as t_tag3, t.create_time as t_create_time, t.modify_time as t_modify_time, 
-    t.describes as t_describes
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.describes as t_describes, 
+    t.tag1 as t_tag1, t.tag2 as t_tag2, t.tag3 as t_tag3, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
     from t_house_release t
     where t.id = #{id,jdbcType=BIGINT}
   </select>
@@ -309,12 +309,12 @@
     t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
     t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
     t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
-    t.contact_explain as t_contact_explain, t.remark as t_remark, t.tag1 as t_tag1, t.tag2 as t_tag2, 
-    t.tag3 as t_tag3, t.create_time as t_create_time, t.modify_time as t_modify_time, 
-    t.describes as t_describes
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.describes as t_describes, 
+    t.tag1 as t_tag1, t.tag2 as t_tag2, t.tag3 as t_tag3, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
     from t_house_release t
   </select>
-  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="ResultMapWithBLOBs">
+  <select id="selectByParameters" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.code as t_code, t.agent_id as t_agent_id, t.collect_fang_uuid as t_collect_fang_uuid, 
     t.use_type as t_use_type, t.sales_type as t_sales_type, t.status as t_status, t.grading_name as t_grading_name, 
     t.province as t_province, t.city as t_city, t.district as t_district, t.cbd as t_cbd, 
@@ -340,12 +340,12 @@
     t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
     t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
     t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
-    t.contact_explain as t_contact_explain, t.remark as t_remark, t.tag1 as t_tag1, t.tag2 as t_tag2, 
-    t.tag3 as t_tag3, t.create_time as t_create_time, t.modify_time as t_modify_time, 
-    t.describes as t_describes
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.describes as t_describes, 
+    t.tag1 as t_tag1, t.tag2 as t_tag2, t.tag3 as t_tag3, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
     from t_house_release t
   </select>
-  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.code as t_code, t.agent_id as t_agent_id, t.collect_fang_uuid as t_collect_fang_uuid, 
     t.use_type as t_use_type, t.sales_type as t_sales_type, t.status as t_status, t.grading_name as t_grading_name, 
     t.province as t_province, t.city as t_city, t.district as t_district, t.cbd as t_cbd, 
@@ -371,9 +371,9 @@
     t.payment_type as t_payment_type, t.commission_type as t_commission_type, t.has_key as t_has_key, 
     t.key_no as t_key_no, t.owner as t_owner, t.owner_mobile as t_owner_mobile, t.contact as t_contact, 
     t.property_credentials as t_property_credentials, t.nationality as t_nationality, 
-    t.contact_explain as t_contact_explain, t.remark as t_remark, t.tag1 as t_tag1, t.tag2 as t_tag2, 
-    t.tag3 as t_tag3, t.create_time as t_create_time, t.modify_time as t_modify_time, 
-    t.describes as t_describes
+    t.contact_explain as t_contact_explain, t.remark as t_remark, t.describes as t_describes, 
+    t.tag1 as t_tag1, t.tag2 as t_tag2, t.tag3 as t_tag3, t.create_time as t_create_time, 
+    t.modify_time as t_modify_time
     from t_house_release t
   </select>
   <select id="selectByPageListSum" parameterType="java.util.HashMap" resultType="java.util.HashMap">
@@ -409,12 +409,12 @@
       commission_type, has_key, key_no, 
       owner, owner_mobile, contact, 
       property_credentials, nationality, 
-      contact_explain, remark, tag1, 
-      tag2, tag3, create_time, 
-      modify_time, describes)
+      contact_explain, remark, describes, 
+      tag1, tag2, tag3, 
+      create_time, modify_time)
     values <foreach collection="list" item="item" separator=",">(#{item.id,jdbcType=BIGINT}, 
       #{item.code,jdbcType=VARCHAR}, #{item.agentId,jdbcType=BIGINT}, #{item.collectFangUuid,jdbcType=VARCHAR}, 
-      #{item.useType,jdbcType=BIT}, #{item.salesType,jdbcType=BIT}, #{item.status,jdbcType=BIT}, 
+      #{item.useType,jdbcType=INTEGER}, #{item.salesType,jdbcType=INTEGER}, #{item.status,jdbcType=INTEGER},
       #{item.gradingName,jdbcType=VARCHAR}, #{item.province,jdbcType=INTEGER}, #{item.city,jdbcType=INTEGER}, 
       #{item.district,jdbcType=VARCHAR}, #{item.cbd,jdbcType=VARCHAR}, #{item.address,jdbcType=VARCHAR}, 
       #{item.buildingNo,jdbcType=VARCHAR}, #{item.unitNo,jdbcType=VARCHAR}, #{item.houseNo,jdbcType=VARCHAR}, 
@@ -422,27 +422,27 @@
       #{item.room,jdbcType=INTEGER}, #{item.hall,jdbcType=INTEGER}, #{item.kitchen,jdbcType=INTEGER}, 
       #{item.toilet,jdbcType=INTEGER}, #{item.salesPrice,jdbcType=DECIMAL}, #{item.salesUnitPrice,jdbcType=DECIMAL}, 
       #{item.balcony,jdbcType=INTEGER}, #{item.position,jdbcType=VARCHAR}, #{item.depth,jdbcType=DOUBLE}, 
-      #{item.floorHeight,jdbcType=DOUBLE}, #{item.gateWidth,jdbcType=DOUBLE}, #{item.floorNum,jdbcType=BIT}, 
-      #{item.level,jdbcType=BIT}, #{item.officeRate,jdbcType=DOUBLE}, #{item.parkingLength,jdbcType=DOUBLE}, 
+      #{item.floorHeight,jdbcType=DOUBLE}, #{item.gateWidth,jdbcType=DOUBLE}, #{item.floorNum,jdbcType=INTEGER},
+      #{item.level,jdbcType=INTEGER}, #{item.officeRate,jdbcType=DOUBLE}, #{item.parkingLength,jdbcType=DOUBLE},
       #{item.parkingWidth,jdbcType=DOUBLE}, #{item.payMonth,jdbcType=DECIMAL}, #{item.capacity,jdbcType=VARCHAR}, 
       #{item.feature,jdbcType=VARCHAR}, #{item.publishPrice,jdbcType=INTEGER}, #{item.lowestPrice,jdbcType=INTEGER}, 
-      #{item.propertyRightType2,jdbcType=BIT}, #{item.buildingYear,jdbcType=INTEGER}, 
-      #{item.buildingArea,jdbcType=INTEGER}, #{item.usableArea,jdbcType=DOUBLE}, #{item.housingType,jdbcType=BIT}, 
-      #{item.decorationType2,jdbcType=BIT}, #{item.orientation,jdbcType=BIT}, #{item.buildingStructure,jdbcType=BIT}, 
-      #{item.certificateFive,jdbcType=BIT}, #{item.onlyHousing,jdbcType=BIT}, #{item.lookTimeType,jdbcType=VARCHAR}, 
-      #{item.innerCode,jdbcType=VARCHAR}, #{item.taxType,jdbcType=BIT}, #{item.leasePrice,jdbcType=DECIMAL}, 
-      #{item.leaseUnitPrice,jdbcType=DECIMAL}, #{item.payType,jdbcType=BIT}, #{item.detain,jdbcType=INTEGER}, 
-      #{item.pay,jdbcType=INTEGER}, #{item.delegationType,jdbcType=BIT}, #{item.delegationTime,jdbcType=TIMESTAMP}, 
+      #{item.propertyRightType2,jdbcType=INTEGER}, #{item.buildingYear,jdbcType=INTEGER},
+      #{item.buildingArea,jdbcType=INTEGER}, #{item.usableArea,jdbcType=DOUBLE}, #{item.housingType,jdbcType=INTEGER},
+      #{item.decorationType2,jdbcType=INTEGER}, #{item.orientation,jdbcType=INTEGER}, #{item.buildingStructure,jdbcType=INTEGER},
+      #{item.certificateFive,jdbcType=INTEGER}, #{item.onlyHousing,jdbcType=INTEGER}, #{item.lookTimeType,jdbcType=VARCHAR},
+      #{item.innerCode,jdbcType=VARCHAR}, #{item.taxType,jdbcType=INTEGER}, #{item.leasePrice,jdbcType=DECIMAL},
+      #{item.leaseUnitPrice,jdbcType=DECIMAL}, #{item.payType,jdbcType=INTEGER}, #{item.detain,jdbcType=INTEGER},
+      #{item.pay,jdbcType=INTEGER}, #{item.delegationType,jdbcType=INTEGER}, #{item.delegationTime,jdbcType=TIMESTAMP},
       #{item.managerPrice,jdbcType=DECIMAL}, #{item.readyTime,jdbcType=TIMESTAMP}, #{item.delegationNo,jdbcType=VARCHAR}, 
-      #{item.sourceType,jdbcType=BIT}, #{item.actualityType,jdbcType=BIT}, #{item.propertyRightType,jdbcType=BIT}, 
-      #{item.decorationType,jdbcType=BIT}, #{item.credentialsType,jdbcType=BIT}, #{item.baseService,jdbcType=VARCHAR}, 
-      #{item.furniture,jdbcType=VARCHAR}, #{item.electronics,jdbcType=VARCHAR}, #{item.paymentType,jdbcType=BIT}, 
-      #{item.commissionType,jdbcType=BIT}, #{item.hasKey,jdbcType=BIT}, #{item.keyNo,jdbcType=VARCHAR}, 
+      #{item.sourceType,jdbcType=INTEGER}, #{item.actualityType,jdbcType=INTEGER}, #{item.propertyRightType,jdbcType=INTEGER},
+      #{item.decorationType,jdbcType=INTEGER}, #{item.credentialsType,jdbcType=INTEGER}, #{item.baseService,jdbcType=VARCHAR},
+      #{item.furniture,jdbcType=VARCHAR}, #{item.electronics,jdbcType=VARCHAR}, #{item.paymentType,jdbcType=INTEGER},
+      #{item.commissionType,jdbcType=INTEGER}, #{item.hasKey,jdbcType=INTEGER}, #{item.keyNo,jdbcType=VARCHAR},
       #{item.owner,jdbcType=VARCHAR}, #{item.ownerMobile,jdbcType=VARCHAR}, #{item.contact,jdbcType=VARCHAR}, 
       #{item.propertyCredentials,jdbcType=VARCHAR}, #{item.nationality,jdbcType=VARCHAR}, 
-      #{item.contactExplain,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.tag1,jdbcType=VARCHAR}, 
-      #{item.tag2,jdbcType=VARCHAR}, #{item.tag3,jdbcType=VARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}, 
-      #{item.modifyTime,jdbcType=TIMESTAMP}, #{item.describes,jdbcType=LONGVARCHAR})</foreach>
+      #{item.contactExplain,jdbcType=VARCHAR}, #{item.remark,jdbcType=VARCHAR}, #{item.describes,jdbcType=VARCHAR}, 
+      #{item.tag1,jdbcType=VARCHAR}, #{item.tag2,jdbcType=VARCHAR}, #{item.tag3,jdbcType=VARCHAR}, 
+      #{item.createTime,jdbcType=TIMESTAMP}, #{item.modifyTime,jdbcType=TIMESTAMP})</foreach>
   </insert>
   <delete id="batchDelete" parameterType="java.util.List">
     delete from t_house_release

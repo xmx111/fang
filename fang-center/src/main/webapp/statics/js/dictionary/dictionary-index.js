@@ -5,15 +5,14 @@ $(document).ready(function () {
         addUrl : 'dictionary/operator.htm',
         editUrl : 'dictionary/operator.htm',
         deleteUrl : 'dictionary/delete.json',
-        colNames : ['id', '代码', '值', '状态：0-无效,1-有效', '描述', '创建时间', '修改时间'],
         colModel : [
-            {name:'id', index: 'id', hidden:true},
-            {name: 'code', index: 'code', width: 90},
-            {name: 'value', index: 'value', width: 90},
-            {name: 'status', index: 'status', width: 90},
-            {name: 'description', index: 'description', width: 90},
-            {name: 'createTime', index: 'createTime', width: 90},
-            {name: 'modifyTime', index: 'modifyTime', width: 90}
+            {name:'id', lable: 'id', index: 'id', hidden:true},
+            {name: 'code', lable: '代码', index: 'code', width: 90},
+            {name: 'value', lable: '值', index: 'value', width: 90},
+            {name: 'status', lable: '状态：0-无效,1-有效', index: 'status', width: 90},
+            {name: 'description', lable: '描述', index: 'description', width: 90},
+            {name: 'createTime', lable: '创建时间', index: 'createTime', width: 90},
+            {name: 'modifyTime', lable: '修改时间', index: 'modifyTime', width: 90}
         ]
         // ,footerrow : true, userDataOnFooter: true
     });

@@ -28,17 +28,17 @@ public class HouseRelease implements Serializable {
     /**
      * 用途
      */
-    private Boolean useType;
+    private Integer useType;
 
     /**
      * 销售类型
      */
-    private Boolean salesType;
+    private Integer salesType;
 
     /**
      * 状态
      */
-    private Boolean status;
+    private Integer status;
 
     /**
      * 楼盘名称
@@ -158,12 +158,12 @@ public class HouseRelease implements Serializable {
     /**
      * 层数
      */
-    private Boolean floorNum;
+    private Integer floorNum;
 
     /**
      * 级别
      */
-    private Boolean level;
+    private Integer level;
 
     /**
      * 实率
@@ -208,7 +208,7 @@ public class HouseRelease implements Serializable {
     /**
      * 产权性质
      */
-    private Boolean propertyRightType2;
+    private Integer propertyRightType2;
 
     /**
      * 建筑年代
@@ -228,32 +228,32 @@ public class HouseRelease implements Serializable {
     /**
      * 住宅类型
      */
-    private Boolean housingType;
+    private Integer housingType;
 
     /**
      * 装修类型
      */
-    private Boolean decorationType2;
+    private Integer decorationType2;
 
     /**
      * 朝向
      */
-    private Boolean orientation;
+    private Integer orientation;
 
     /**
      * 建筑结构
      */
-    private Boolean buildingStructure;
+    private Integer buildingStructure;
 
     /**
      * 产证满五
      */
-    private Boolean certificateFive;
+    private Integer certificateFive;
 
     /**
      * 唯一住房
      */
-    private Boolean onlyHousing;
+    private Integer onlyHousing;
 
     /**
      * 看房时间
@@ -268,7 +268,7 @@ public class HouseRelease implements Serializable {
     /**
      * 税费类型
      */
-    private Boolean taxType;
+    private Integer taxType;
 
     /**
      * 出租价
@@ -283,7 +283,7 @@ public class HouseRelease implements Serializable {
     /**
      * 支付方式
      */
-    private Boolean payType;
+    private Integer payType;
 
     /**
      * 押
@@ -298,7 +298,7 @@ public class HouseRelease implements Serializable {
     /**
      * 委托方式
      */
-    private Boolean delegationType;
+    private Integer delegationType;
 
     /**
      * 委托时间
@@ -323,27 +323,27 @@ public class HouseRelease implements Serializable {
     /**
      * 来源
      */
-    private Boolean sourceType;
+    private Integer sourceType;
 
     /**
      * 现状
      */
-    private Boolean actualityType;
+    private Integer actualityType;
 
     /**
      * 产权
      */
-    private Boolean propertyRightType;
+    private Integer propertyRightType;
 
     /**
      * 装修
      */
-    private Boolean decorationType;
+    private Integer decorationType;
 
     /**
      * 证书
      */
-    private Boolean credentialsType;
+    private Integer credentialsType;
 
     /**
      * 配套
@@ -363,17 +363,17 @@ public class HouseRelease implements Serializable {
     /**
      * 付款方式
      */
-    private Boolean paymentType;
+    private Integer paymentType;
 
     /**
      * 付拥
      */
-    private Boolean commissionType;
+    private Integer commissionType;
 
     /**
      * 钥匙
      */
-    private Boolean hasKey;
+    private Integer hasKey;
 
     /**
      * 钥匙编号
@@ -416,6 +416,11 @@ public class HouseRelease implements Serializable {
     private String remark;
 
     /**
+     * 房源描述
+     */
+    private String describes;
+
+    /**
      * 标签1
      */
     private String tag1;
@@ -439,11 +444,6 @@ public class HouseRelease implements Serializable {
      * 修改时间
      */
     private Date modifyTime;
-
-    /**
-     * 房源描述
-     */
-    private String describes;
 
     private static final long serialVersionUID = 1L;
 
@@ -479,27 +479,27 @@ public class HouseRelease implements Serializable {
         this.collectFangUuid = collectFangUuid == null ? null : collectFangUuid.trim();
     }
 
-    public Boolean getUseType() {
+    public Integer getUseType() {
         return useType;
     }
 
-    public void setUseType(Boolean useType) {
+    public void setUseType(Integer useType) {
         this.useType = useType;
     }
 
-    public Boolean getSalesType() {
+    public Integer getSalesType() {
         return salesType;
     }
 
-    public void setSalesType(Boolean salesType) {
+    public void setSalesType(Integer salesType) {
         this.salesType = salesType;
     }
 
-    public Boolean getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
@@ -687,19 +687,19 @@ public class HouseRelease implements Serializable {
         this.gateWidth = gateWidth;
     }
 
-    public Boolean getFloorNum() {
+    public Integer getFloorNum() {
         return floorNum;
     }
 
-    public void setFloorNum(Boolean floorNum) {
+    public void setFloorNum(Integer floorNum) {
         this.floorNum = floorNum;
     }
 
-    public Boolean getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(Boolean level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
@@ -767,11 +767,11 @@ public class HouseRelease implements Serializable {
         this.lowestPrice = lowestPrice;
     }
 
-    public Boolean getPropertyRightType2() {
+    public Integer getPropertyRightType2() {
         return propertyRightType2;
     }
 
-    public void setPropertyRightType2(Boolean propertyRightType2) {
+    public void setPropertyRightType2(Integer propertyRightType2) {
         this.propertyRightType2 = propertyRightType2;
     }
 
@@ -799,51 +799,51 @@ public class HouseRelease implements Serializable {
         this.usableArea = usableArea;
     }
 
-    public Boolean getHousingType() {
+    public Integer getHousingType() {
         return housingType;
     }
 
-    public void setHousingType(Boolean housingType) {
+    public void setHousingType(Integer housingType) {
         this.housingType = housingType;
     }
 
-    public Boolean getDecorationType2() {
+    public Integer getDecorationType2() {
         return decorationType2;
     }
 
-    public void setDecorationType2(Boolean decorationType2) {
+    public void setDecorationType2(Integer decorationType2) {
         this.decorationType2 = decorationType2;
     }
 
-    public Boolean getOrientation() {
+    public Integer getOrientation() {
         return orientation;
     }
 
-    public void setOrientation(Boolean orientation) {
+    public void setOrientation(Integer orientation) {
         this.orientation = orientation;
     }
 
-    public Boolean getBuildingStructure() {
+    public Integer getBuildingStructure() {
         return buildingStructure;
     }
 
-    public void setBuildingStructure(Boolean buildingStructure) {
+    public void setBuildingStructure(Integer buildingStructure) {
         this.buildingStructure = buildingStructure;
     }
 
-    public Boolean getCertificateFive() {
+    public Integer getCertificateFive() {
         return certificateFive;
     }
 
-    public void setCertificateFive(Boolean certificateFive) {
+    public void setCertificateFive(Integer certificateFive) {
         this.certificateFive = certificateFive;
     }
 
-    public Boolean getOnlyHousing() {
+    public Integer getOnlyHousing() {
         return onlyHousing;
     }
 
-    public void setOnlyHousing(Boolean onlyHousing) {
+    public void setOnlyHousing(Integer onlyHousing) {
         this.onlyHousing = onlyHousing;
     }
 
@@ -863,11 +863,11 @@ public class HouseRelease implements Serializable {
         this.innerCode = innerCode == null ? null : innerCode.trim();
     }
 
-    public Boolean getTaxType() {
+    public Integer getTaxType() {
         return taxType;
     }
 
-    public void setTaxType(Boolean taxType) {
+    public void setTaxType(Integer taxType) {
         this.taxType = taxType;
     }
 
@@ -887,11 +887,11 @@ public class HouseRelease implements Serializable {
         this.leaseUnitPrice = leaseUnitPrice;
     }
 
-    public Boolean getPayType() {
+    public Integer getPayType() {
         return payType;
     }
 
-    public void setPayType(Boolean payType) {
+    public void setPayType(Integer payType) {
         this.payType = payType;
     }
 
@@ -911,11 +911,11 @@ public class HouseRelease implements Serializable {
         this.pay = pay;
     }
 
-    public Boolean getDelegationType() {
+    public Integer getDelegationType() {
         return delegationType;
     }
 
-    public void setDelegationType(Boolean delegationType) {
+    public void setDelegationType(Integer delegationType) {
         this.delegationType = delegationType;
     }
 
@@ -951,43 +951,43 @@ public class HouseRelease implements Serializable {
         this.delegationNo = delegationNo == null ? null : delegationNo.trim();
     }
 
-    public Boolean getSourceType() {
+    public Integer getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(Boolean sourceType) {
+    public void setSourceType(Integer sourceType) {
         this.sourceType = sourceType;
     }
 
-    public Boolean getActualityType() {
+    public Integer getActualityType() {
         return actualityType;
     }
 
-    public void setActualityType(Boolean actualityType) {
+    public void setActualityType(Integer actualityType) {
         this.actualityType = actualityType;
     }
 
-    public Boolean getPropertyRightType() {
+    public Integer getPropertyRightType() {
         return propertyRightType;
     }
 
-    public void setPropertyRightType(Boolean propertyRightType) {
+    public void setPropertyRightType(Integer propertyRightType) {
         this.propertyRightType = propertyRightType;
     }
 
-    public Boolean getDecorationType() {
+    public Integer getDecorationType() {
         return decorationType;
     }
 
-    public void setDecorationType(Boolean decorationType) {
+    public void setDecorationType(Integer decorationType) {
         this.decorationType = decorationType;
     }
 
-    public Boolean getCredentialsType() {
+    public Integer getCredentialsType() {
         return credentialsType;
     }
 
-    public void setCredentialsType(Boolean credentialsType) {
+    public void setCredentialsType(Integer credentialsType) {
         this.credentialsType = credentialsType;
     }
 
@@ -1015,27 +1015,27 @@ public class HouseRelease implements Serializable {
         this.electronics = electronics == null ? null : electronics.trim();
     }
 
-    public Boolean getPaymentType() {
+    public Integer getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(Boolean paymentType) {
+    public void setPaymentType(Integer paymentType) {
         this.paymentType = paymentType;
     }
 
-    public Boolean getCommissionType() {
+    public Integer getCommissionType() {
         return commissionType;
     }
 
-    public void setCommissionType(Boolean commissionType) {
+    public void setCommissionType(Integer commissionType) {
         this.commissionType = commissionType;
     }
 
-    public Boolean getHasKey() {
+    public Integer getHasKey() {
         return hasKey;
     }
 
-    public void setHasKey(Boolean hasKey) {
+    public void setHasKey(Integer hasKey) {
         this.hasKey = hasKey;
     }
 
@@ -1103,6 +1103,14 @@ public class HouseRelease implements Serializable {
         this.remark = remark == null ? null : remark.trim();
     }
 
+    public String getDescribes() {
+        return describes;
+    }
+
+    public void setDescribes(String describes) {
+        this.describes = describes == null ? null : describes.trim();
+    }
+
     public String getTag1() {
         return tag1;
     }
@@ -1141,14 +1149,6 @@ public class HouseRelease implements Serializable {
 
     public void setModifyTime(Date modifyTime) {
         this.modifyTime = modifyTime;
-    }
-
-    public String getDescribes() {
-        return describes;
-    }
-
-    public void setDescribes(String describes) {
-        this.describes = describes == null ? null : describes.trim();
     }
 
     @Override
@@ -1239,12 +1239,12 @@ public class HouseRelease implements Serializable {
         sb.append(", nationality=").append(nationality);
         sb.append(", contactExplain=").append(contactExplain);
         sb.append(", remark=").append(remark);
+        sb.append(", describes=").append(describes);
         sb.append(", tag1=").append(tag1);
         sb.append(", tag2=").append(tag2);
         sb.append(", tag3=").append(tag3);
         sb.append(", createTime=").append(createTime);
         sb.append(", modifyTime=").append(modifyTime);
-        sb.append(", describes=").append(describes);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

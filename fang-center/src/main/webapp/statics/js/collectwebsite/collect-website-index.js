@@ -5,13 +5,12 @@ $(document).ready(function () {
         addUrl : 'collectwebsite/operator.htm',
         editUrl : 'collectwebsite/operator.htm',
         deleteUrl : 'collectwebsite/delete.json',
-        colNames : ['id', '网站地址', '网站图标', '创建时间', '修改时间'],
         colModel : [
-            {name:'id', index: 'id', hidden:true},
-            {name: 'url', index: 'url', width: 90},
-            {name: 'icon', index: 'icon', width: 90},
-            {name: 'createTime', index: 'createTime', width: 90},
-            {name: 'modifyTime', index: 'modifyTime', width: 90}
+            {name:'id', lable: 'id', index: 'id', hidden:true},
+            {name: 'url', lable: '网站地址', index: 'url', width: 90},
+            {name: 'icon', lable: '网站图标', index: 'icon', width: 90},
+            {name: 'createTime', lable: '创建时间', index: 'createTime', width: 90},
+            {name: 'modifyTime', lable: '修改时间', index: 'modifyTime', width: 90}
         ]
         // ,footerrow : true, userDataOnFooter: true
     });

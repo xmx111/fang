@@ -831,3 +831,15 @@ body[data-page="basic-theme"] .path-btn > .path-1:after {
     text-align: right;
     border-top: 1px solid #e5e5e5;
 }
+/* Interaction states
+----------------------------------*/
+.ui-widget-content .ui-state-default .ui-pg-button .ui-pg-div {
+    color: #217bc0;
+}
+.ui-state-default .ui-icon {
+    background-image: url("images/ui-icons_6da8d5_256x240.png");
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+    background-image: url("images/ui-icons_217bc0_256x240.png");
+}

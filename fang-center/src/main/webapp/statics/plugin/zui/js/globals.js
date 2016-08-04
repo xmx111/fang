@@ -57,8 +57,8 @@ var Global = function(){
                 autowidth: true,
                 rowNum: 20,
                 rowList: [10,20,30,40,50,100],
-                // pager: '#gridPager',
                 // sortname: 'orderdate',
+                footerrow : false,
                 viewrecords: true,
                 sortorder: 'desc',
                 // caption: 'Preserving Selection on Client-side sorting',
@@ -115,10 +115,11 @@ var Global = function(){
              **/
             $.fn.initJqGrid = function (options) {
                 var table = $(this);
-                var colNames = new Array();
+                var colNames = !options['colNames'] ? new Array() : options['colNames'];
                 var colModels = new Array();
                 for (var i = 0; i < options.colModel.length; i ++){
-                    colNames.push(options.colModel[i]['lable']);
+                    if (!!options.colModel[i]['lable'])
+                        colNames.push(options.colModel[i]['lable']);
                     var model = {};
                     model['name'] = options.colModel[i]['name'];
                     model['width'] = options.colModel[i]['width'];
@@ -128,7 +129,7 @@ var Global = function(){
                     model['formatter'] = options.colModel[i]['formatter'];
                     colModels.push(model);
                 }
-                var _options = $.extend(defaultOptions, options);
+                var _options = $.extend({}, defaultOptions, options);
                 _options['colNames'] = colNames;
                 _options['colModel'] = colModels;
                 // 加分页div
@@ -157,10 +158,10 @@ var Global = function(){
                     
                 });
                 var pagerId = _options['pager'];
-                table.navGrid(pagerId, {edit:false,add:false,del:false,search:false});
+                table.navGrid(pagerId, {edit:false,add:false,del:false,search:false,search:false,refresh:false});
                 // 自定义按钮
                 if (!!_options['btnOptions']) {
-                    for (var i = _options['btnOptions'].length - 1; i >= 0; i--) {
+                    for (var i = 0; i < _options['btnOptions'].length; i++) {
                         table.navButtonAdd(pagerId, _options['btnOptions'][i]);
                     }
                 }
@@ -233,7 +234,7 @@ var Global = function(){
                         var width = table.jqGrid('getGridParam', 'width');
                         var height = table.jqGrid('getGridParam', 'height');
                         var parentWidth = table.closest('div.ui-jqgrid').parent('div') .width();
-                        var parentHeight = table.closest('div.ui-jqgrid').closest('div#mainContent') .height() - 179;
+                        var parentHeight = table.closest('div.ui-jqgrid').closest('div#mainContent') .height() - ($(this) .jqGrid('getGridParam', 'footerrow') ? 179 : 143);
                         if (width != parentWidth || height != parentHeight) {
                             if (width != parentWidth) table.jqGrid('setGridWidth', parentWidth);
                             if (height != parentHeight) table.jqGrid('setGridHeight', parentHeight);

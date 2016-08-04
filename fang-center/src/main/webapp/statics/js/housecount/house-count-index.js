@@ -5,12 +5,11 @@ $(document).ready(function () {
         addUrl : 'housecount/operator.htm',
         editUrl : 'housecount/operator.htm',
         deleteUrl : 'housecount/delete.json',
-        colNames : ['id', '点击数', '采集数', '举报数'],
         colModel : [
-            {name:'id', index: 'id', hidden:true},
-            {name: 'clickNum', index: 'clickNum', width: 90},
-            {name: 'collectNum', index: 'collectNum', width: 90},
-            {name: 'informNum', index: 'informNum', width: 90}
+            {name:'id', lable: 'id', index: 'id', hidden:true},
+            {name: 'clickNum', lable: '点击数', index: 'clickNum', width: 90},
+            {name: 'collectNum', lable: '采集数', index: 'collectNum', width: 90},
+            {name: 'informNum', lable: '举报数', index: 'informNum', width: 90}
         ]
         // ,footerrow : true, userDataOnFooter: true
     });

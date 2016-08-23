@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * 字典下拉选择框控件
- * @author zhangzhiwen@hitao.com
+ * @author hekang@hitao.com
  * @created 2016年2月25日 下午5:40:32
  */
 public class DropDownSelectBox implements TemplateDirectiveModel {
@@ -26,12 +26,11 @@ public class DropDownSelectBox implements TemplateDirectiveModel {
         String keyValueType = getParam(params, "keyValueType");
         String key = getParam(params, "key");
         String value = getParam(params, "value");
-        String isShowPlease = getParam(params, "isShowPlease");
+        String isShowPlease = getParam(params, "isShowPlease", "true");
         String isShowBlank = getParam(params, "isShowBlank");
         String id = getParam(params, "id");
         String name = getParam(params, "name");
         String clazz = getParam(params, "class");
-        String required = getParam(params, "required");
         String disabled = getParam(params, "disabled");
         String style = getParam(params, "style");
         Map<String, Object> ret = new HashMap<String, Object>();
@@ -43,7 +42,6 @@ public class DropDownSelectBox implements TemplateDirectiveModel {
         ret.put("id", id);
         ret.put("name", name);
         ret.put("class", clazz);
-        ret.put("required", required);
         ret.put("disabled", disabled);
         ret.put("style", style);
         template.process(ret, env.getOut());

@@ -35,6 +35,37 @@ public interface CommonDic {
 	KeyValue<Integer, String> SEX_MAN = new KeyValue<Integer, String>(0, "男", 1);
 	KeyValue<Integer, String> SEX_WOMAN = new KeyValue<Integer, String>(1, "女", 0);
 	KeyValueType<Integer, String> SEX = new KeyValueType<Integer, String>("sex", "性别", SEX_MAN, SEX_WOMAN);
-	
-	
+
+	/**
+	 * 房源类型
+	 */
+	KeyValue<Integer, String> HOUSE_STYLE_HOME = new KeyValue<Integer, String>(0, "住宅", 0);
+	KeyValue<Integer, String> HOUSE_STYLE_VILLA = new KeyValue<Integer, String>(1, "别墅", 1);
+	KeyValue<Integer, String> HOUSE_STYLE_SHOPS = new KeyValue<Integer, String>(2, "商铺", 2);
+	KeyValue<Integer, String> HOUSE_STYLE_OFFICE = new KeyValue<Integer, String>(3, "写字楼", 3);
+	KeyValueType<Integer, String> HOUSE_STYLE = new KeyValueType<Integer, String>("houseStyle", "房源类型", HOUSE_STYLE_HOME, HOUSE_STYLE_VILLA, HOUSE_STYLE_SHOPS, HOUSE_STYLE_OFFICE);
+
+	/**
+	 * 房源来源
+	 */
+	KeyValue<Integer, String> HOUSE_SOURCE_58 = new KeyValue<Integer, String>(0, "58同城", 0);
+	KeyValue<Integer, String> HOUSE_SOURCE_GANJI = new KeyValue<Integer, String>(1, "赶集网", 1);
+	KeyValue<Integer, String> HOUSE_SOURCE_ANJUKE = new KeyValue<Integer, String>(2, "安居客", 2);
+	KeyValue<Integer, String> HOUSE_SOURCE_SINA = new KeyValue<Integer, String>(3, "新浪乐居", 3);
+	KeyValue<Integer, String> HOUSE_SOURCE_JIAODIAN = new KeyValue<Integer, String>(4, "焦点网", 4);
+	KeyValue<Integer, String> HOUSE_SOURCE_YIDENG = new KeyValue<Integer, String>(5, "易登网", 5);
+	KeyValue<Integer, String> HOUSE_SOURCE_0731 = new KeyValue<Integer, String>(6, "0731房产网", 6);
+	KeyValueType<Integer, String> HOUSE_SOURCE = new KeyValueType<Integer, String>("houseSource", "房源来源", HOUSE_SOURCE_58, HOUSE_SOURCE_GANJI, HOUSE_SOURCE_ANJUKE, HOUSE_SOURCE_SINA, HOUSE_SOURCE_JIAODIAN, HOUSE_SOURCE_YIDENG, HOUSE_SOURCE_0731);
+
+	/**
+	 * 户型
+	 */
+	KeyValue<Integer, String> HOUSE_TYPE_1 = new KeyValue<Integer, String>(0, "一居室", 0);
+	KeyValue<Integer, String> HOUSE_TYPE_2 = new KeyValue<Integer, String>(1, "二居室", 1);
+	KeyValue<Integer, String> HOUSE_TYPE_3 = new KeyValue<Integer, String>(2, "三居室", 2);
+	KeyValue<Integer, String> HOUSE_TYPE_4 = new KeyValue<Integer, String>(3, "四居室", 3);
+	KeyValue<Integer, String> HOUSE_TYPE_5 = new KeyValue<Integer, String>(4, "五居室", 4);
+	KeyValue<Integer, String> HOUSE_TYPE_6 = new KeyValue<Integer, String>(5, "六居室", 5);
+	KeyValue<Integer, String> HOUSE_TYPE_7 = new KeyValue<Integer, String>(6, "七居室", 6);
+	KeyValueType<Integer, String> HOUSE_TYPE = new KeyValueType<Integer, String>("houseType", "户型", HOUSE_TYPE_1, HOUSE_TYPE_2, HOUSE_TYPE_3, HOUSE_TYPE_4, HOUSE_TYPE_5, HOUSE_TYPE_6, HOUSE_TYPE_7);
 }

@@ -69,4 +69,5 @@ $(document).ready(function () {
         }]
         // ,footerrow : true, userDataOnFooter: true
     });
+    Area.render('#distinct', '#cbd');
 });

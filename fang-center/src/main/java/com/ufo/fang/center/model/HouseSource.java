@@ -182,6 +182,8 @@ public class HouseSource implements Serializable {
      */
     private Date modifyTime;
 
+    private String address;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -466,6 +468,14 @@ public class HouseSource implements Serializable {
 
     public String getTime(){
         return DateUtils.getDateBeforeCurrent(createTime);
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

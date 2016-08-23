@@ -2,7 +2,7 @@ package com.ufo.fang.center.constants;
 
 /**
  * 键值对象
- * @author zhangzhiwen@hitao.com
+ * @author hekang@hitao.com
  * @created 2016年2月23日 上午10:53:14
  */
 public class KeyValue<K, V> implements Comparable<KeyValue<K, V>> {

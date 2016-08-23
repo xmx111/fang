@@ -52,7 +52,7 @@
 		<javaClientGenerator targetPackage="com.ufo.fang.center.dao.mapper"
 			targetProject="src/main/java" type="com.ufo.generator.mybatis.javamapper.HTJavaClientGenerator">
 			<property name="enableSubPackages" value="true" />
-			<property name="rootInterface" value="com.ufo.fang.common.dao.mapper.BaseMapper"/><!-- mapper是否继承模式 -->
+			<property name="rootInterface" value="com.ufo.fang.common.dao.sqlmap.BaseMapper"/><!-- mapper是否继承模式 -->
 		</javaClientGenerator>
 
 		<!--

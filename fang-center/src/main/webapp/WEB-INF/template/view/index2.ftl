@@ -8,8 +8,10 @@
         <title>Hello world!</title>
         <!-- zui -->
         <link href="${webroot}/statics/plugin/zui/css/zui.css" rel="stylesheet" />
+        <link href="${webroot}/statics/plugin/zui/lib/chosen/chosen.css"rel="stylesheet" />
+        <#--<link href="${webroot}/statics/plugin/zui/lib/chosen/chosen.icons.css"rel="stylesheet" />-->
         <link href="${webroot}/statics/plugin/jqgrid/css/ui.jqgrid.css" rel="stylesheet" />
-        <link href="/statics/plugin/jqueryui/jquery-ui.css"rel="stylesheet" />
+        <link href="${webroot}/statics/plugin/jqueryui/jquery-ui.css"rel="stylesheet" />
         <link href="${webroot}/statics/css/index.css" rel="stylesheet" />
     </head>
     <body class="compact-mode compact-mode-in">
@@ -86,11 +88,14 @@
         <script src="${webroot}/statics/plugin/jquery/jquery-1.12.0.min.js"></script>
         <!-- ZUI Javascript组件 -->
         <script src="${webroot}/statics/plugin/zui/js/zui.js"></script>
+        <script src="${webroot}/statics/plugin/zui/lib/chosen/chosen.js"></script>
+        <#--<script src="${webroot}/statics/plugin/zui/lib/chosen/chosen.icons.js"></script>-->
         <!-- jqGrid Javascript组件 -->
         <script src="${webroot}/statics/plugin/jqgrid/js/i18n/grid.locale-cn.js"></script>
         <script src="${webroot}/statics/plugin/jqgrid/js/jquery.jqGrid.min.js"></script>
         <!-- 全局 Javascript -->
         <script src="${webroot}/statics/plugin/zui/js/globals.js"></script>
+        <script src="${webroot}/statics/js/area.js"></script>
         <script src="${webroot}/statics/js/index2.js"></script>
     </body>
 </html>

@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * 键值工具类,将字典信息汇总，统一处理
- * @author zhangzhiwen@hitao.com
+ * @author hekang@hitao.com
  * @created 2016年2月23日 上午10:30:38
  */
 public class KeyValueUtil {
@@ -19,6 +19,7 @@ public class KeyValueUtil {
 	
 	static {
 		load(CommonDic.IS_BOOLEAN, CommonDic.STATUS, CommonDic.LOCK_STATUS, CommonDic.SEX);
+		load(CommonDic.HOUSE_STYLE, CommonDic.HOUSE_SOURCE, CommonDic.HOUSE_TYPE);
 	}
 	
 	private static void load(KeyValueType<?, ?> ... keyValueTypes) {

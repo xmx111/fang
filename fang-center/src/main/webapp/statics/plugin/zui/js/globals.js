@@ -234,7 +234,8 @@ var Global = function(){
                         var width = table.jqGrid('getGridParam', 'width');
                         var height = table.jqGrid('getGridParam', 'height');
                         var parentWidth = table.closest('div.ui-jqgrid').parent('div') .width();
-                        var parentHeight = table.closest('div.ui-jqgrid').closest('div#mainContent') .height() - ($(this) .jqGrid('getGridParam', 'footerrow') ? 179 : 143);
+                        var searchHeight = table.closest('div.ui-jqgrid').closest('#mainContent').find('.search-form-default').height() + 12 + 7 + 10 + 38 + 38;
+                        var parentHeight = table.closest('div.ui-jqgrid').closest('#mainContent').height() - searchHeight - ($(this) .jqGrid('getGridParam', 'footerrow') ? 36: 0);
                         if (width != parentWidth || height != parentHeight) {
                             if (width != parentWidth) table.jqGrid('setGridWidth', parentWidth);
                             if (height != parentHeight) table.jqGrid('setGridHeight', parentHeight);

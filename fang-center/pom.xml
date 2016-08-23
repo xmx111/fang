@@ -212,6 +212,16 @@
 		</dependency>
 		<!-- httpclient-->
 
+		<!-- spider -->
+		<dependency>
+			<groupId>us.codecraft</groupId>
+			<artifactId>webmagic-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>us.codecraft</groupId>
+			<artifactId>webmagic-extension</artifactId>
+		</dependency>
+
 		<!-- 工程服务依赖 -->
 		<dependency>
 			<groupId>com.ufo.commerce</groupId>

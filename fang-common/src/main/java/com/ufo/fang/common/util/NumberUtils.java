@@ -3,10 +3,6 @@ package com.ufo.fang.common.util;
 import org.apache.commons.lang.RandomStringUtils;
 
 import java.util.Date;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 /***
  * 数据工具类

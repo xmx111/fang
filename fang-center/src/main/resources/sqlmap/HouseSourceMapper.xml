@@ -46,7 +46,7 @@
     <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into t_house_source (id, uuid, source, 
+    insert into t_house_source (uuid, source,
       url, source_id, title, 
       grading_name, use_type, sales_type, 
       status, province, city, 
@@ -58,7 +58,7 @@
       decoration_type, building_structure, orientation, 
       describes, contact, contact_mobile, 
       create_time, modify_time)
-    values (#{id,jdbcType=BIGINT}, #{uuid,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+    values (#{uuid,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR},
       #{url,jdbcType=VARCHAR}, #{sourceId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
       #{gradingName,jdbcType=VARCHAR}, #{useType,jdbcType=VARCHAR}, #{salesType,jdbcType=VARCHAR}, 
       #{status,jdbcType=VARCHAR}, #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, 
@@ -148,6 +148,10 @@
     t.orientation as t_orientation, t.describes as t_describes, t.contact as t_contact, 
     t.contact_mobile as t_contact_mobile, t.create_time as t_create_time, t.modify_time as t_modify_time
     from t_house_source t
+    <where>
+      <if test="url!=null">t.url=#{url,jdbcType=VARCHAR}</if>
+    </where>
+    order by id desc
   </select>
   <select id="selectByPageList" parameterType="java.util.HashMap" resultMap="BaseResultMap">
     select t.id as t_id, t.uuid as t_uuid, t.source as t_source, t.url as t_url, t.source_id as t_source_id, 

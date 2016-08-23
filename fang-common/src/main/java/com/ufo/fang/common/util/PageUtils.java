@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * 封装mybatis的PageHelper
- * @author zhangzhiwen@hitao.com
+ * @author hekang@hitao.com
  * @created 2016年2月26日 下午5:06:08
  */
 public class PageUtils {

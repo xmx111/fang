@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * 键值类型
- * @author zhangzhiwen@hitao.com
+ * @author hekang@hitao.com
  * @created 2016年2月23日 上午10:53:26
  */
 public class KeyValueType<K, V> {

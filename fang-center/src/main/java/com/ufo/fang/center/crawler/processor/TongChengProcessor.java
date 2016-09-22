@@ -1,5 +1,6 @@
 package com.ufo.fang.center.crawler.processor;
 
+import com.ufo.fang.center.crawler.downloader.FangHttpClientDownloader;
 import com.ufo.fang.center.model.HouseSourceSO;
 import com.ufo.fang.center.crawler.pipeline.HouseSourcePipeline;
 import us.codecraft.webmagic.Page;
@@ -41,7 +42,7 @@ public class TongChengProcessor implements PageProcessor {
                 return;
             }
             HouseSourceSO so = new HouseSourceSO();
-            so.setUrl(page.getHtml().xpath("//[@id='main']//[@id='clickValId']/@value").toString());
+            so.setUrl(page.getUrl().toString());
             so.setTitle(page.getHtml().xpath("//[@id='main']//div[@class='mainTitle']/div[@class='bigtitle']/h1/text()").toString());
             so.setGradingName(page.getHtml().xpath("//[@id='main']//div[@class='maintop']/div[@class='sumary']/ul[1]/li[5]/a[3]/text()").toString());
             so.setDistrict(page.getHtml().xpath("//[@id='main']//div[@class='maintop']/div[@class='sumary']/ul[1]/li[5]/a[1]/text()").toString());
@@ -64,6 +65,7 @@ public class TongChengProcessor implements PageProcessor {
     public static void main(String[] args) throws Exception {
 //        Spider spider = Spider.create(new TongChengProcessor()).addUrl("http://cs.58.com/ershoufang/pn1/")
         Spider spider = Spider.create(new TongChengProcessor()).addUrl("http://short.58.com/zd_p/1a894422-fb4c-4c91-a10b-7e7fc33769ad/?target=xf-16-xgk_psfegvimob_30743110326382q-feykn&end=end&psid=124517920192915600012005345&entinfo=27102557298239_0")
+                .setDownloader(new FangHttpClientDownloader())
                 .addPipeline(new ConsolePipeline())
                 .addPipeline(new HouseSourcePipeline());
         spider.start();

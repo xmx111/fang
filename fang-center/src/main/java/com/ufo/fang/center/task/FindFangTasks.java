@@ -18,7 +18,7 @@ public class FindFangTasks {
     TongchengCrawler tongchengCrawler;
 
     // 半分钟一次
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(fixedDelay = 30 * 1000, initialDelay = 30 * 10000000)
     public void crawler() {
         tongchengCrawler.crawlPage();
     }

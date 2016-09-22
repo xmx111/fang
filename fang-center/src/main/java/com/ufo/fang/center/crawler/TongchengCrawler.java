@@ -1,5 +1,6 @@
 package com.ufo.fang.center.crawler;
 
+import com.ufo.fang.center.crawler.downloader.FangHttpClientDownloader;
 import com.ufo.fang.center.model.HouseSourceSO;
 import com.ufo.fang.center.crawler.pipeline.HouseSourcePipeline;
 import com.ufo.fang.center.crawler.processor.TongChengProcessor;
@@ -51,6 +52,7 @@ public class TongchengCrawler {
         //spider = Spider.create(new TongChengProcessor()).addUrl("http://short.58.com/zd_p/1a894422-fb4c-4c91-a10b-7e7fc33769ad/?target=xf-16-xgk_psfegvimob_30743110326382q-feykn&end=end&psid=124517920192915600012005345&entinfo=27102557298239_0")
         spider = Spider.create(new TongChengProcessor()).addUrl("http://cs.58.com/ershoufang/pn1/")
                 .thread(5)
+                .setDownloader(new FangHttpClientDownloader())
                 .addPipeline(houseSourcePipeline);
     }
 }

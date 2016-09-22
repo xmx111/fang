@@ -21,6 +21,7 @@
 		<mapper resource="sqlmap/HouseCountMapper.xml" />
 		<mapper resource="sqlmap/HouseReleaseMapper.xml" />
 		<mapper resource="sqlmap/HouseSourceMapper.xml" />
+		<mapper resource="sqlmap/HouseSourceImagesMapper.xml" />
 	</mappers>
   	
 </configuration>

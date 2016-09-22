@@ -33,7 +33,7 @@
 		<!-- 数据库配置 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://127.0.0.1:3306/ufo_fang?characterEncoding=utf8"
-			userId="root" password="" />
+			userId="root" password="root" />
 
 		<!-- java类型处理器，覆盖Tinyint转Byte为转Integer-->
 		<javaTypeResolver type="com.ufo.generator.mybatis.types.HTJavaTypeResolverImpl" />
@@ -64,40 +64,7 @@
 		-->
 		<!--<table tableName="demo_dictionary" domainObjectName="Dictionary">-->
 		<!--</table>-->
-		<table tableName="t_agent" domainObjectName="Agent" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_agent_third_account" domainObjectName="AgentThirdAccount" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_china_area" domainObjectName="ChinaArea" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_collect_website" domainObjectName="CollectWebsite" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_dictionary" domainObjectName="Dictionary" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_grading" domainObjectName="Grading" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_grading_info" domainObjectName="GradingInfo" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_house" domainObjectName="House" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_house_count" domainObjectName="HouseCount" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_house_count" domainObjectName="HouseCount" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_house_release" domainObjectName="HouseRelease" alias="t">
-			<generatedKey column="id" sqlStatement="Mysql"/>
-		</table>
-		<table tableName="t_house_source" domainObjectName="HouseSource" alias="t">
+		<table tableName="t_house_source_images" domainObjectName="HouseSourceImages" alias="t">
 			<generatedKey column="id" sqlStatement="Mysql"/>
 		</table>
 	</context>

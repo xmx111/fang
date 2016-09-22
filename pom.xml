@@ -5,7 +5,7 @@
 	<artifactId>fang</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>搜房服务1</name>
+	<name>搜房服务2</name>
 	
 	<modules>
 		<module>fang-center</module>
